@@ -1,6 +1,6 @@
 package ru.progwards.java1.lessons.basics;
 
-public class Task3 {
+public class AccuracyDoubleFloat {
 //    public static void main(String[] args) {
 //        double R = 6371.2;
 //        System.out.println(volumeBallDouble(R));
