@@ -9,10 +9,10 @@ public class AccuracyDoubleFloat {
     }
 
     public static double volumeBallDouble(double radius){
-        return (double)(4 / 3) * 3.14 * radius * radius * radius;
+        return 4.0 / 3.0 * 3.14 * radius * radius * radius;
     }
     public static float volumeBallFloat(float radius){
-        return (float)(4 / 3) * 3.14f * radius * radius * radius;
+        return 4f / 3f * 3.14f * radius * radius * radius;
     }
     public static double calculateAccuracy(double radius){
         return  volumeBallFloat((float)radius)-volumeBallDouble(radius);
