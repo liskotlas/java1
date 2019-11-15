@@ -3,7 +3,14 @@ package ru.progwards.java1.lessons.ru.progwards.java1.lessons.compare_if_cycles;
 public class CyclesGoldenFibo {
     public static void main(String[] args) {
         for (int f = 1; f < 16; f++) {
-           System.out.println(fiboNumber(10));
+           System.out.println(fiboNumber(f));
+        }
+        for (int i = 1; i <= 100; i++){
+            for (int d = 1; d <= 100; d++){
+                if (isGoldenTriangle(i, i, d)){
+                    System.out.println("Треугольник: a = " + i + " b = " + i + " c = " + d);
+                }
+            }
         }
     }
     public static boolean containsDigit(int number, int digit) {
@@ -15,7 +22,6 @@ public class CyclesGoldenFibo {
                 return true;
             }
             number /= 10;
-            System.out.println(number);
         }
         return false;
     }
@@ -31,13 +37,12 @@ public class CyclesGoldenFibo {
             if (i == 1) {
                 x = 0;
             }
-        System.out.println(i + " - " + r);
         }
         return r;
     }
 
     public static boolean isGoldenTriangle(int a, int b, int c){
-        if (a == b && a / c > 1.61703 && a/c < 1.61903){
+        if (a == b && (float) a / (float) c > 1.61703 && (float) a / (float) c < 1.61903){
             return true;
         }
         if (a == c && a / b > 1.61703 && a/b < 1.61903){
@@ -46,7 +51,7 @@ public class CyclesGoldenFibo {
         if (c == b && c / a > 1.61703 && c/a < 1.61903){
             return true;
         }
-
+        return false;
 
     }
 
