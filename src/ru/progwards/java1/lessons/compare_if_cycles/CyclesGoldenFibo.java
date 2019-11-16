@@ -2,23 +2,22 @@ package ru.progwards.java1.lessons.compare_if_cycles;
 
 public class CyclesGoldenFibo {
     public static void main(String[] args) {
-        for (int f = 1; f < 16; f++) {
-           System.out.println(fiboNumber(f));
-        }
-        for (int i = 1; i <= 100; i++){
-            for (int d = 1; d <= 100; d++){
-                if (isGoldenTriangle(i, i, d)){
-                    System.out.println("Треугольник: a = " + i + " b = " + i + " c = " + d);
-                }
-            }
-        }
+        System.out.println(containsDigit(12,1));
+//        for (int f = 1; f < 16; f++) {
+//           System.out.println(fiboNumber(f));
+//        }
+//        for (int i = 1; i <= 100; i++){
+//            for (int d = 1; d <= 100; d++){
+//                if (isGoldenTriangle(i, i, d)){
+//                    System.out.println("Треугольник: a = " + i + " b = " + i + " c = " + d);
+//                }
+//            }
+//        }
+        System.out.println(isGoldenTriangle(1,2,3));
     }
     public static boolean containsDigit(int number, int digit) {
-        while (number > 0) {
-            if (number >= 10 && number % 10 == digit) {
-                return true;
-            }
-            if (number < 10 && number == digit) {
+        while (number >= 0) {
+            if (number % 10 == digit) {
                 return true;
             }
             number /= 10;
@@ -42,16 +41,18 @@ public class CyclesGoldenFibo {
     }
 
     public static boolean isGoldenTriangle(int a, int b, int c){
-        if (a == b && (float) a / (float) c > 1.61703 && (float) a / (float) c < 1.61903){
+        double ac = (double) a / (double) c;
+        double ab = (double) a / (double) b;
+        double ca = (double) c / (double) a;
+        if (a == b && ac > 1.61703 && ac < 1.61903){
             return true;
         }
-        if (a == c && a / b > 1.61703 && a/b < 1.61903){
+        if (a == c && ab > 1.61703 && ab < 1.61903){
             return true;
         }
-        if (c == b && c / a > 1.61703 && c/a < 1.61903){
+        if (c == b && ca > 1.61703 && ca < 1.61903){
             return true;
         }
         return false;
-
     }
 }
