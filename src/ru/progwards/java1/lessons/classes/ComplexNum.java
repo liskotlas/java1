@@ -23,7 +23,7 @@ public class ComplexNum {
     }
 
     public ComplexNum mul(ComplexNum num1, ComplexNum num2){
-        return new ComplexNum(num1.a * num2.b - num1.b * num2.b, num1.b * num2.a + num1.a * num2.b);
+        return new ComplexNum(num1.a * num2.a - num1.b * num2.b, num1.b * num2.a + num1.a * num2.b);
     }
 
     public ComplexNum div(ComplexNum num1, ComplexNum num2){
