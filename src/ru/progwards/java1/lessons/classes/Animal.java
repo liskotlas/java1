@@ -3,9 +3,8 @@ package ru.progwards.java1.lessons.classes;
 public class Animal {
     double weight;
 
-    public Animal(){
-
-    }
+//    public Animal(){
+//    }
 
     enum AnimalKind {
         ANIMAL,
@@ -29,7 +28,7 @@ public class Animal {
     }
 
     public String toString() {
-        return "I am " + getKind() + "eat " + getFoodKind() + CalculateFoodWeight();
+        return "I am " + getKind() + " eat " + getFoodKind() + CalculateFoodWeight();
     }
 
     public double getWeight(){
@@ -46,5 +45,12 @@ public class Animal {
 
     public double CalculateFoodWeight(){
         return weight * getFoodCoeff();
+    }
+
+    public static void main(String[] args) {
+        Animal animal = new Animal(10);
+        System.out.println(animal.toString());
+        Duck duck = new Duck(10);
+        System.out.println(duck.toString());
     }
 }
