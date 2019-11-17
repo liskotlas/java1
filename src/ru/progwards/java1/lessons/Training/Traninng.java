@@ -1,17 +1,14 @@
 package ru.progwards.java1.lessons.Training;
 
-import java.sql.SQLOutput;
-
 public class Traninng {
     public static void main(String[] args) {
-        System.out.println(factorial(3));
-    }
 
-    static long factorial(long n){
-        long f = 1;
-        for (long i = 1; i <= n; i++){
-            f *= i;
-        }
-        return f;
-    }
+//  Number x = 5.5;
+//  Number y = 10.1;
+//
+//  int z = x.intValue() + y.intValue();
+//        System.out.println(z);
+        System.out.println("!");
+
 }
+    }

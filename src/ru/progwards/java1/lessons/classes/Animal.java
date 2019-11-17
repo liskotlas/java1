@@ -28,7 +28,7 @@ public class Animal {
     }
 
     public String toString() {
-        return "I am " + getKind() + " eat " + getFoodKind() + CalculateFoodWeight();
+        return "I am " + getKind() + ", eat " + getFoodKind() + CalculateFoodWeight();
     }
 
     public double getWeight(){
@@ -52,5 +52,7 @@ public class Animal {
         System.out.println(animal.toString());
         Duck duck = new Duck(10);
         System.out.println(duck.toString());
+        System.out.println(new Cow(10).toString());
+        System.out.println(new Hamster(10).toString());
     }
 }
