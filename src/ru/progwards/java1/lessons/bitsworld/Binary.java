@@ -1,18 +1,18 @@
 package ru.progwards.java1.lessons.bitsworld;
 
 public class Binary {
-    byte num;
-    public Binary(byte num){
-        this.num = (byte) num;
+    int num;
+    public Binary(int num){
+        this.num = num;
     }
     public String toString(){
         String tmp = "";
-        for (int i = 0; i<=7; i++) {
-            tmp += String.valueOf(this.num >> i & 0b00000001);
+        for (int i = 7; i>=0; i--) {
+            tmp += String.valueOf((byte)this.num >> i & 0b00000001);
         }
         return tmp;
     }
     public static void main(String[] args) {
-        System.out.println(new Binary((byte) 0b01110111).toString());
+        System.out.println(new Binary(1 ).toString());
     }
 }
