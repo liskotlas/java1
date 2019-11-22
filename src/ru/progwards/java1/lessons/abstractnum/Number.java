@@ -12,6 +12,7 @@ public class Number {
     }
 
     public Number newNumber(String strNum) {
+        new Number();
         return null;
     }
- }
+}

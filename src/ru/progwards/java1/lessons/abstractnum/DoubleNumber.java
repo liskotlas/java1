@@ -28,5 +28,4 @@ public class DoubleNumber extends Number {
         double dblNumN2 = Double.valueOf(String.valueOf(n2));
         return (dblNumN1 / dblNumN2);
     }
-
 }
