@@ -1,17 +1,17 @@
 package ru.progwards.java1.lessons.abstractnum;
 
 public class Figure3D {
-    java.lang.Number segment;
+    Number segment;
 
     public Figure3D(){
 
     }
 
-    public Figure3D(java.lang.Number segment) {
+    public Figure3D(Number segment) {
             this.segment = segment;
         }
 
-    public Number volume(){
+    public java.lang.Number volume(){
         return null;
     }
 }

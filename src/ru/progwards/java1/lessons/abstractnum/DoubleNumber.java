@@ -2,8 +2,6 @@ package ru.progwards.java1.lessons.abstractnum;
 
 public class DoubleNumber extends Number {
     double dblNum ;
-    private Number n1;
-    private Number n2;
 
     public DoubleNumber (Double dblNum){
         this.dblNum = dblNum;
