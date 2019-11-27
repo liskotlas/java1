@@ -13,12 +13,13 @@ public class IntNumber extends Number {
         return new IntNumber(intNum);
     }
     @Override
-    public java.lang.Number mul(Number n1, Number n2) {
-        return (Integer.valueOf(String.valueOf(n1)) * Integer.valueOf(String.valueOf(n2)));
+    public Number mul(Number n1, Number n2) {
+//        return (Integer.valueOf(String.valueOf(n1)) * Integer.valueOf(String.valueOf(n2)));
+        return Integer.parseInt(n1.toString());
     }
 
     @Override
-    public java.lang.Number div(Number n1, Number n2){
+    public Number div(Number n1, Number n2){
         return (Integer.valueOf(String.valueOf(n1))) / (Integer.valueOf(String.valueOf(n2)))  ;
 
     }

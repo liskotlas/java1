@@ -4,8 +4,8 @@ public class Cube extends Figure3D{
 
     @Override
 
-    public java.lang.Number volume(){
-        java.lang.Number vol = segment.mul(segment, (Number) segment.mul(segment, segment));
+    public Number volume(){
+        Number vol = segment.mul(segment, (Number) segment.mul(segment, segment));
         return vol;
     }
 }

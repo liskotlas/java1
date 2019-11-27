@@ -11,7 +11,7 @@ public class Figure3D {
             this.segment = segment;
         }
 
-    public java.lang.Number volume(){
+    public Number volume(){
         return null;
     }
 }
