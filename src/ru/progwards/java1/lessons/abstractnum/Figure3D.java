@@ -22,7 +22,9 @@ public class Figure3D {
         System.out.println("Сегмент = " + cube.segment.intNum);
         System.out.println("Объем куба равен " + cube.volume().intNum);
 
-
-
+        Figure3D ball = new Ball();
+        ball.segment = new DoubleNumber(2.5);
+        System.out.println("Сегмент = " + ball.segment.dblNum);
+        System.out.println("Объем шара равен " + ball.volume().dblNum);
     }
 }

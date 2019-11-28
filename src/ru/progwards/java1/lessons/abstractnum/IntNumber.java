@@ -10,9 +10,7 @@ public class IntNumber extends Number {
 
     @Override
     public Number newNumber(String strNum){
-        IntNumber i = new IntNumber(Integer.parseInt(strNum));
-//        System.out.println("i = " + i);
-        return i;
+        return new IntNumber(Integer.parseInt(strNum));
 
     }
     @Override
