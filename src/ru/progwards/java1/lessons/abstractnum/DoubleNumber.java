@@ -1,7 +1,7 @@
 package ru.progwards.java1.lessons.abstractnum;
 
 public class DoubleNumber extends Number {
-    double dblNum ;
+//    double dblNum ;
 
     public DoubleNumber (Double dblNum){
         this.dblNum = dblNum;
@@ -9,9 +9,7 @@ public class DoubleNumber extends Number {
 
     @Override
     public Number newNumber(String strNum){
-        double dblNum = Double.parseDouble(strNum.toString());
-//        double dblNum = Double.valueOf(strNum);
-        return new DoubleNumber(dblNum);
+        return new DoubleNumber(Double.parseDouble(strNum));
     }
 
     @Override
@@ -20,7 +18,7 @@ public class DoubleNumber extends Number {
         double dblNumN2 = Double.parseDouble(n2.toString());
 //        double dblNumN1 = Double.valueOf(String.valueOf(n1));
 //        double dblNumN2 = Double.valueOf(String.valueOf(n2));
-        return (dblNumN1 * dblNumN2);
+        return (n1);
     }
 
     @Override

@@ -1,26 +1,31 @@
 package ru.progwards.java1.lessons.abstractnum;
 
 public class IntNumber extends Number {
-    int intNum ;
+//    int intNum ;
 
-    public IntNumber (int IntNum){
-        this.intNum = IntNum;
+
+    public IntNumber (int intNum){
+        this.intNum = intNum;
     }
 
     @Override
     public Number newNumber(String strNum){
-        int intNum = Integer.valueOf(strNum);
-        return new IntNumber(intNum);
+        IntNumber i = new IntNumber(Integer.parseInt(strNum));
+//        System.out.println("i = " + i);
+        return i;
+
     }
     @Override
     public Number mul(Number n1, Number n2) {
-//        return (Integer.valueOf(String.valueOf(n1)) * Integer.valueOf(String.valueOf(n2)));
-        return Integer.parseInt(n1.toString());
+//        System.out.println("IntNumber = " + n1.intNum * n2.intNum );
+        return new IntNumber(n1.intNum * n2.intNum) ;
+
+
     }
 
     @Override
     public Number div(Number n1, Number n2){
-        return (Integer.valueOf(String.valueOf(n1))) / (Integer.valueOf(String.valueOf(n2)))  ;
+        return (n2)  ;
 
     }
 }
