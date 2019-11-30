@@ -1,11 +1,6 @@
 package ru.progwards.java1.lessons.abstractnum;
 
 abstract public class Number {
-    int intNum;
-    String strNum;
-    double dblNum ;
-
-
 
     public Number mul (Number n1, Number n2) {
         return null;
@@ -19,4 +14,8 @@ abstract public class Number {
         return null;
     }
 
+    @Override
+    public String toString() {
+        return null;
+    }
 }

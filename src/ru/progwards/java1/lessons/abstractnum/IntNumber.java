@@ -1,11 +1,10 @@
 package ru.progwards.java1.lessons.abstractnum;
 
 public class IntNumber extends Number {
-//    int intNum ;
-
+    int intNumber;
 
     public IntNumber (int intNum){
-        this.intNum = intNum;
+        this.intNumber = intNum;
     }
 
     @Override
@@ -15,15 +14,22 @@ public class IntNumber extends Number {
     }
     @Override
     public Number mul(Number n1, Number n2) {
-//        System.out.println("IntNumber = " + n1.intNum * n2.intNum );
-        return new IntNumber(n1.intNum * n2.intNum) ;
+//       System.out.println(Integer.parseInt(n1.toString()) * Integer.parseInt(n2.toString()));
+       Integer n = Integer.parseInt(n1.toString()) * Integer.parseInt(n2.toString());
+       return newNumber(n.toString());
 
 
     }
 
     @Override
-    public Number div(Number n1, Number n2){
-        return (n2)  ;
+    public Number div(Number n1, Number n2) {
+        Integer n = Integer.parseInt(n1.toString()) / Integer.parseInt(n2.toString());
+        return newNumber(n.toString());
+    }
 
+
+    @Override
+        public String toString() {
+            return ((Integer)intNumber).toString();
     }
 }
