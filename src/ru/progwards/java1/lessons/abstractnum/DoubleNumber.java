@@ -14,14 +14,14 @@ public class DoubleNumber extends Number {
     }
 
     @Override
-    public Number mul(Number n1, Number n2) {
-        Double n = Double.parseDouble (n1.toString()) * Double.parseDouble(n2.toString());
+    public Number mul(Number num) {
+        Double n = dblNum * Double.parseDouble(num.toString());
         return newNumber(n.toString());
     }
 
     @Override
-    public Number div(Number n1, Number n2) {
-        Double n = Double.parseDouble (n1.toString()) / Double.parseDouble(n2.toString());
+    public Number div(Number num) {
+        Double n = dblNum / Double.parseDouble(num.toString());
         return newNumber(n.toString());
     }
 
