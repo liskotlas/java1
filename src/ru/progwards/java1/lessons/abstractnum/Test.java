@@ -2,33 +2,20 @@ package ru.progwards.java1.lessons.abstractnum;
 
 public class Test {
     public static void main(String[] args) {
-        Figure3D cube = new Cube(new IntNumber(3));
-        System.out.println(cube.volume());
+        Figure3D intCube = new Cube(new IntNumber(3));
+        System.out.println(intCube.volume());
 
-//
-//        fig = new Cube(new DoubleNumber(3.0));
-//        System.out.println(fig.volume());
-//
-//        fig = new Pyramid(new IntNumber(3));
-//        System.out.println(fig.volume());
-//
-//        fig = new Pyramid(new DoubleNumber(3.0));
-//        System.out.println(fig.volume());
+
+        Figure3D dblCube = new Cube(new DoubleNumber((double)3));
+        System.out.println(dblCube.volume());
+
+        Figure3D intPyramid = new Pyramid(new IntNumber(3));
+        System.out.println(intPyramid.volume());
+
+
+        Figure3D dblPyramyd = new Pyramid(new DoubleNumber((double) 3));
+        System.out.println(dblPyramyd.volume());
     }
-
-
-//    public static void main(String[] args) {
-//
-//        Figure3D cube = new Cube(new IntNumber(3));
-//        System.out.println("Объем куба равен " + cube.volume());
-//
-//        Figure3D intPyramid = new Pyramid(new IntNumber(3));
-//        System.out.println("Объем пирамиды равен " + intPyramid.volume());
-//
-//
-//        Figure3D dblPyramyd = new Pyramid(new DoubleNumber(3.0));
-//        System.out.println("Объем пирамиды равен " + dblPyramyd.volume());
-//    }
 }
 
 
