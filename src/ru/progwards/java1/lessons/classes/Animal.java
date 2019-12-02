@@ -4,7 +4,7 @@ import ru.progwards.java1.lessons.interfaces.Comparable;
 
 import java.util.Objects;
 
-public class Animal implements Comparable {
+public class Animal {
     double weight;
 
     enum AnimalKind {
@@ -89,24 +89,6 @@ public class Animal implements Comparable {
         System.out.println(new Cow(10).toString());
         System.out.println(new Hamster(10).toString());
     }
-
-    @Override
-    public int Comparable(Animal animal) {
-
-        if (Animal.this.weight == animal.weight){
-            return 0;
-        }
-        if (Animal.this.weight < animal.weight) {
-            return -1;
-        }
-        if (Animal.this.weight > animal.weight) {
-            return 1;
-        }
-        return 0;
-    }
-
-
-
 
 
 }

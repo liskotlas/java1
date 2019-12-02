@@ -1,22 +1,25 @@
 package ru.progwards.java1.lessons.interfaces;
 
+import org.checkerframework.checker.units.qual.A;
+
 import java.util.Arrays;
 
 public class ArraySort implements Comparable{
     int tmp;
 
-    public void Animal (Animal[] a){
+    public void sort (Animal[] a){
+        Animal x, y;
         int tmp;
-        Animal x;
+
            for (int f = 0; f < a.length; f++){
             x = a [f];
             for (int i = f + 1; i < a.length; i++){
-                new A = a[i];
+//                new Animal[] = a[i];
 //                if (a [f] > a [i]){
                 if (Comparable (x) > 1){
-                    tmp = a [f];
+//                    tmp = a [f];
                     a [f] = a [i];
-                    a [i] = tmp;
+//                    a [i] = tmp;
                 }
             }
         }
@@ -29,8 +32,8 @@ public class ArraySort implements Comparable{
     }
 
     @Override
-    public int Comparable(Animal a) {
-        if (a > Animal(Animal(););)
+    public int Comparable(Animal x) {
+//        if (x > Animal(Animal(););)
 
 
         return 0;
