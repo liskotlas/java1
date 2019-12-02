@@ -1,10 +1,12 @@
-package ru.progwards.java1.lessons.classes;
+package ru.progwards.java1.lessons.interfaces;
 
-import ru.progwards.java1.lessons.interfaces.Comparable;
+import ru.progwards.java1.lessons.classes.Cow;
+import ru.progwards.java1.lessons.classes.Duck;
+import ru.progwards.java1.lessons.classes.Hamster;
 
 import java.util.Objects;
 
-public class Animal implements Comparable {
+public  class Animal implements Comparable{
     double weight;
 
     enum AnimalKind {
@@ -56,7 +58,7 @@ public class Animal implements Comparable {
         return 1;
     }
 
-    public Animal (double Weight){
+    public Animal(double Weight){
         this.weight = Weight;
     }
 
