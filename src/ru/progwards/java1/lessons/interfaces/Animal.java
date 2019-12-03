@@ -43,7 +43,7 @@ public class Animal implements Comparable<Animal> {
     }
 
     public double getFoodPrice(){
-        return CalculateFoodWeight() * getFood1kgPrice();
+        return calculateFoodWeight() * getFood1kgPrice();
     }
 
     public int compareFoodPrice(Animal animal){
@@ -59,7 +59,7 @@ public class Animal implements Comparable<Animal> {
     }
 
     public String toString() {
-        return "I am " + getKind() + ", eat " + getFoodKind() + CalculateFoodWeight();
+        return "I am " + getKind() + ", eat " + getFoodKind() + calculateFoodWeight();
     }
 
     public double getWeight(){
@@ -74,7 +74,7 @@ public class Animal implements Comparable<Animal> {
         return 0.02;
     }
 
-    public double CalculateFoodWeight(){
+    public double calculateFoodWeight(){
         return weight * getFoodCoeff();
     }
 
@@ -90,17 +90,6 @@ public class Animal implements Comparable<Animal> {
     public int hashCode() {
         return Objects.hash(weight);
     }
-
-//    public static void main(String[] args) {
-//        Animal animal = new Animal(10);
-//        System.out.println(animal.toString());
-//        Duck duck = new Duck(10);
-//        System.out.println(duck.toString());
-//        System.out.println(new Cow(10).toString());
-//        System.out.println(new Hamster(10).toString());
-//    }
-
-
-    }
+}
 
 
