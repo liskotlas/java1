@@ -1,11 +1,10 @@
 package ru.progwards.java1.lessons.classes;
 
-import ru.progwards.java1.lessons.interfaces.Comparable;
-
 import java.util.Objects;
 
-public class Animal {
+public class Animal  {
     double weight;
+
 
     enum AnimalKind {
         ANIMAL,

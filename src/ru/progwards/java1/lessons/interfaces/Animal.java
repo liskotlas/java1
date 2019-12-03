@@ -1,13 +1,21 @@
 package ru.progwards.java1.lessons.interfaces;
 
-import ru.progwards.java1.lessons.classes.Cow;
-import ru.progwards.java1.lessons.classes.Duck;
-import ru.progwards.java1.lessons.classes.Hamster;
-
 import java.util.Objects;
 
-public  class Animal implements Comparable{
+public class Animal implements Comparable<Animal> {
     double weight;
+
+    @Override
+    public int compareTo(Animal animal) {
+        if (Animal.this.weight == animal.weight){
+            return 0;
+        }
+        if (Animal.this.weight < animal.weight) {
+            return -1;
+        }
+        return 1;
+    }
+
 
     enum AnimalKind {
         ANIMAL,
@@ -83,33 +91,16 @@ public  class Animal implements Comparable{
         return Objects.hash(weight);
     }
 
-    public static void main(String[] args) {
-        Animal animal = new Animal(10);
-        System.out.println(animal.toString());
-        Duck duck = new Duck(10);
-        System.out.println(duck.toString());
-        System.out.println(new Cow(10).toString());
-        System.out.println(new Hamster(10).toString());
+//    public static void main(String[] args) {
+//        Animal animal = new Animal(10);
+//        System.out.println(animal.toString());
+//        Duck duck = new Duck(10);
+//        System.out.println(duck.toString());
+//        System.out.println(new Cow(10).toString());
+//        System.out.println(new Hamster(10).toString());
+//    }
+
+
     }
 
-    @Override
-    public int Comparable(Animal animal) {
-
-        if (Animal.this.weight == animal.weight){
-            return 0;
-        }
-        if (Animal.this.weight < animal.weight) {
-            return -1;
-        }
-        if (Animal.this.weight > animal.weight) {
-            return 1;
-        }
-        return 0;
-    }
-
-
-
-
-
-}
 
