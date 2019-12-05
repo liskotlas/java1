@@ -25,7 +25,6 @@ public abstract class Number implements Comparable<Number>{
     public String toString() {
         return null;
     }
-
 }
 
 
