@@ -28,6 +28,8 @@ public class Eratosthenes {
     }
 
         public static void main (String[]args){
-            new Eratosthenes(30);
+            Eratosthenes a = new Eratosthenes(30);
+            System.out.println(a.isSimple(10));
+            ;
         }
 }
