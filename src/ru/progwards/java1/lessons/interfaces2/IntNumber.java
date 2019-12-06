@@ -2,8 +2,9 @@ package ru.progwards.java1.lessons.interfaces2;
 
 public class IntNumber extends Number {
 
-
-    public int compareTo(Number num) {
+    @Override
+    public int compareTo(Object o) {
+        Number num = (Number) o;
         return Integer.compare(Integer.parseInt(this.toString()), Integer.parseInt(num.toString()));
     }
 

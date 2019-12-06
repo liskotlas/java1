@@ -1,7 +1,7 @@
 package ru.progwards.java1.lessons.interfaces2;
 
 
-public class ArraySort{
+public class ArraySort implements java.lang.Comparable {
     public static void sort(Comparable<Number>[] a){
         Comparable<Number> tmp;
 //    public void sort (Animal[] a){
@@ -16,5 +16,10 @@ public class ArraySort{
             }
             }
         }
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }

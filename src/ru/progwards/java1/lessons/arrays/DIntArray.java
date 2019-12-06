@@ -1,19 +1,17 @@
 package ru.progwards.java1.lessons.arrays;
 
-        import ru.progwards.java1.lessons.Training.Array;
-
-        import java.util.Arrays;
+    import java.util.Arrays;
 
 public class DIntArray {
     private int[] a;
 
     public DIntArray() {
-
+    a = new int [0];
     }
 
-    public DIntArray(int []d) {
-    a = d;
-    }
+//    public DIntArray(int []d) {
+//    a = d;
+//    }
 
     public void add(int num) {
         int[] b = Arrays.copyOf(a, a.length + 1);
@@ -46,14 +44,17 @@ public class DIntArray {
 
 
     public static void main(String[] args) {
-        int[] b = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        DIntArray arr = new DIntArray(b);
-        System.out.println(Arrays.toString(b));
+//        int[] b = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        DIntArray arr = new DIntArray();
+//        System.out.println(Arrays.toString());
         arr.add(333);
-        arr.atInsert(5, 333);
-       arr.atDelete(5);
-       arr.atDelete(10);
+        arr.add(333);
+        arr.add(333);
+        arr.add(333);
+        arr.add(333);
 
-
+        arr.atInsert(5, 555);
+       arr.atDelete(2);
+       arr.atDelete(4);
     }
 }
