@@ -6,9 +6,11 @@ public class CalculateFibonacci {
     static class CacheInfo {
         int n;
         int fibo;
+        int score;
 
-        CacheInfo (int fibo){
+        CacheInfo (int fibo, int score){
             this.fibo = fibo;
+            this.score = score;
             ;
         }
     }
@@ -24,7 +26,7 @@ public class CalculateFibonacci {
                 x = 0;
             }
             if (i != n) {
-                lastFibo = new CacheInfo(r);
+                lastFibo = new CacheInfo(r, i);
             }
             }
         return r;

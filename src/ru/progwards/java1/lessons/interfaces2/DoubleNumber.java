@@ -24,10 +24,11 @@ public class DoubleNumber extends Number {
         Double n = dblNum / Double.parseDouble(num.toString());
         return newNumber(n.toString());
     }
-
-     public int compareTo(Number num) {
-        return Double.compare(Double.parseDouble(this.toString()), Double.parseDouble(num.toString()));
-    }
+//    @Override
+//     public  compareTo(Object o) {
+//        Number num = (Number) o;
+//        return Double.compare(Double.parseDouble(this.toString()), Double.parseDouble(num.toString()));
+//    }
 
     @Override
         public String toString() {
