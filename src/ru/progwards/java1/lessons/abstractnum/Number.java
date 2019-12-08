@@ -1,6 +1,6 @@
 package ru.progwards.java1.lessons.abstractnum;
 
-public abstract class Number {
+public class Number {
     Number(){
 
     }

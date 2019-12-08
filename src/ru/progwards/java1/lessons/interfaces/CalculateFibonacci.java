@@ -15,6 +15,9 @@ public class CalculateFibonacci {
         }
     }
     public static int fiboNumber(int n) {
+        if (n == lastFibo.score){
+            return lastFibo.fibo;
+        }
         int r = 1;
         int x = 0;
         int z = 0;
