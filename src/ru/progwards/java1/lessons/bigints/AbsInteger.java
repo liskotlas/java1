@@ -28,7 +28,7 @@ abstract class AbsInteger {
             if (res >= Short.MIN_VALUE && res <= Short.MAX_VALUE){
                 return  new ShortInteger((short) (Integer.parseInt(num1.toString()) + Integer.parseInt(num2.toString())));
             }
-            return new IntInteger((int) (Integer.parseInt(num1.toString()) + Integer.parseInt(num2.toString())));
+            return new IntInteger(Integer.parseInt(num1.toString()) + Integer.parseInt(num2.toString()));
     }
 
         public static void main(String[] args) {
