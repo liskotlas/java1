@@ -1,10 +1,7 @@
 package ru.progwards.java1.lessons.bigints;
 
-import org.checkerframework.checker.units.qual.A;
-
 import java.math.BigInteger;
 import java.util.Arrays;
-
 
 public class ArrayInteger {
     byte[] digits;
@@ -43,7 +40,6 @@ public class ArrayInteger {
         BigInteger result_2;
         BigInteger result = BigInteger.valueOf(0);
 
-
         for (int i = 0; i < this.digits.length; i++) {
             if (i < num.digits.length) {
                 result_1 = BigInteger.valueOf(this.digits[i]).add(BigInteger.valueOf(num.digits[i]));
@@ -61,8 +57,6 @@ public class ArrayInteger {
         return true;
     }
 
-
-
         public static void main (String[]args){
             ArrayInteger num = new ArrayInteger(5);
             num.fromInt(BigInteger.valueOf(99999));
@@ -70,9 +64,6 @@ public class ArrayInteger {
             a.fromInt(BigInteger.valueOf(99999));
             a.add(num);
             System.out.println(a.toInt());
-
-
-
         }
     }
 
