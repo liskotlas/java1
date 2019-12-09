@@ -1,9 +1,10 @@
 package ru.progwards.java1.lessons.bigints;
 
+import org.checkerframework.checker.units.qual.A;
+
 import java.math.BigInteger;
 import java.util.Arrays;
 
-//import static java.lang.Math.pow;
 
 public class ArrayInteger {
     byte[] digits;
@@ -28,7 +29,6 @@ public class ArrayInteger {
         }
 
         BigInteger result = new BigInteger(s);
-//        BigInteger result = new BigInteger(this.digits);
         return result;
     }
 
@@ -39,29 +39,38 @@ public class ArrayInteger {
             return false;
         }
 
-        BigInteger result1 = BigInteger.valueOf(0);
-        BigInteger result2 = BigInteger.valueOf(0);
+        BigInteger result_1;
+        BigInteger result_2;
         BigInteger result = BigInteger.valueOf(0);
 
 
         for (int i = 0; i < this.digits.length; i++) {
             if (i < num.digits.length) {
-                result1 = BigInteger.valueOf(this.digits[i]).add(BigInteger.valueOf(num.digits[i]));
+                result_1 = BigInteger.valueOf(this.digits[i]).add(BigInteger.valueOf(num.digits[i]));
             } else {
-                result1 = BigInteger.valueOf(this.digits[i]);
+                result_1 = BigInteger.valueOf(this.digits[i]);
             }
-            result2 = result1.multiply(BigInteger.valueOf(10).pow(i));
-            result = result1.add(result2);
+            result_2 = result_1.multiply(BigInteger.valueOf(10).pow(i));
+            result = result.add(result_2);
         }
-        this.fromInt(result);
+        if (result.toString().length() > this.digits.length){
+            Arrays.fill(this.digits, (byte) 0);
+            return false;
+        }
+            this.fromInt(result);
         return true;
     }
 
 
 
         public static void main (String[]args){
-            ArrayInteger num = new ArrayInteger(10);
-            num.fromInt(BigInteger.valueOf(1234567890));
+            ArrayInteger num = new ArrayInteger(5);
+            num.fromInt(BigInteger.valueOf(99999));
+            ArrayInteger a = new ArrayInteger(5);
+            a.fromInt(BigInteger.valueOf(99999));
+            a.add(num);
+            System.out.println(a.toInt());
+
 
 
         }
