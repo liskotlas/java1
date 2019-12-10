@@ -3,9 +3,9 @@ package ru.progwards.java1.lessons.interfaces2;
 public class IntNumber extends Number {
 
     @Override
-    public int compareTo(Object o) {
-        Number num = (Number) o;
-        return Integer.compare(Integer.parseInt(this.toString()), Integer.parseInt(num.toString()));
+    public int compareTo(Number num){
+        Number number = (Number) num;
+        return Integer.compare(Integer.parseInt(this.toString()), Integer.parseInt(number.toString()));
     }
 
 
@@ -29,11 +29,11 @@ public class IntNumber extends Number {
 
     }
 
-    @Override
-    public Number div(Number num) {
-        Integer n = number / Integer.parseInt(num.toString());
-        return newNumber(n.toString());
-    }
+//    @Override
+//    public Number div(Number num) {
+//        Integer n = number / Integer.parseInt(num.toString());
+//        return newNumber(n.toString());
+//    }
 
 
     @Override

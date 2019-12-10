@@ -5,7 +5,7 @@ public abstract class Number implements Comparable<Number>{
     }
 
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(Number num) {
         return 0;
     }
 
