@@ -1,7 +1,5 @@
 package ru.progwards.java1.lessons.io1;
 
-import ru.progwards.java1.lessons.Training.Array;
-
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
