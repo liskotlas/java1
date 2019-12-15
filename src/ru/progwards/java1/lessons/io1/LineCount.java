@@ -12,7 +12,7 @@ public class LineCount {
             try {
                 Scanner scanner = new Scanner(reader);
                 while (scanner.hasNextLine()) {
-                    if (scanner.nextLine() == "") {
+                    if (scanner.nextLine() == "\n") {
                         i++;
                     }
                 }
