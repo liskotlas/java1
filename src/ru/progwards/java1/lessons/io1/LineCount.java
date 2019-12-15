@@ -1,11 +1,10 @@
 package ru.progwards.java1.lessons.io1;
 
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class LineCount {
-    public static int calcEmpty(String fileName){
+    public static int calcEmpty(String fileName) {
         int i = 0;
         try {
             FileReader reader = new FileReader(fileName);
@@ -16,13 +15,12 @@ public class LineCount {
                         i++;
                     }
                 }
+            } finally {
+                reader.close();
             }
-            finally{
-                    reader.close();
-                }
-            } catch (Exception e) {
-                return -1;
-            }
-            return i;
-     }
+        } catch (Exception e) {
+            return -1;
+        }
+        return i;
+    }
 }
