@@ -5,15 +5,16 @@ public class ByteInteger extends AbsInteger {
 
 
     ByteInteger(byte number) {
-        this.number = (byte) number;
+        this.number = number;
     }
 
     @Override
     public String toString() {
-        return Integer.toString(number);
+        return Byte.toString(number);
     }
 
-    public AbsInteger newNumber(String strNum) {
-        return new ByteInteger((byte) Integer.parseInt(strNum));
+    @Override
+    public int absValue() {
+        return this.number;
     }
 }

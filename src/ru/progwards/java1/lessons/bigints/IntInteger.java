@@ -4,15 +4,15 @@ public class IntInteger extends AbsInteger {
     int number;
 
     public IntInteger(int number) {
-        this.number = (int) number;
+        this.number = number;
     }
 
     @Override
     public String toString() {
         return Integer.toString(number);
     }
-
-    public AbsInteger newNumber(String strNum) {
-        return new IntInteger(Integer.parseInt(strNum));
+    @Override
+    public int absValue() {
+            return this.number;
     }
 }
