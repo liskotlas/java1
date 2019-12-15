@@ -3,7 +3,7 @@ package ru.progwards.java1.lessons.io1;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
+
 import java.util.Scanner;
 
 public class Coder {
@@ -18,9 +18,6 @@ public class Coder {
             String s = "";
             for (int i = 0; scanner.hasNextLine(); i++) {
                 res = scanner.nextLine().toCharArray();
-                System.out.println(res.length);
-                System.out.println(Arrays.toString(res));
-                System.out.println(((int) res[1]));
                 for (int f = 0; f < res.length; f++) {
                     s += code[((int) res[f])];
                 }
