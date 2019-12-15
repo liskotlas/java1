@@ -9,16 +9,17 @@ public class Coder {
     char[] a;
 
     public static void codeFile(String inFileName, String outFileName, char[] code, String logName) {
-        String s = "";
 
         try {
             FileReader reader = new FileReader(inFileName);
-            FileWriter writer = new FileWriter(outFileName);
+            FileWriter writer = new FileWriter(outFileName, true);
 //            Scanner scanner = new Scanner(reader);
             while (reader.ready()) {
-                s += code [reader.read()];
+                writer.write(code [reader.read()]);
             }
-            writer.write(s);
+            reader.close();
+            writer.close();
+
 
 
         } catch (IOException e) {
@@ -29,6 +30,7 @@ public class Coder {
                 System.out.println(e_log.getMessage());
             }
         }
+
     }
 }
 
