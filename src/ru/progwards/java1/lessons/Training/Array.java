@@ -1,5 +1,7 @@
 package ru.progwards.java1.lessons.Training;
 
+import java.util.Arrays;
+
 public class Array {
     public static int sumArrayItems(int[] a){
         int result = 0;
@@ -11,6 +13,7 @@ public class Array {
 
     public static void main(String[] args) {
         int [] arr = {12};
-        System.out.println(Array.sumArrayItems (arr));
+        char [] c = new char[]{'a', 'b', 'c', 'd'};
+        System.out.println(Arrays.toString(c));
     }
 }
