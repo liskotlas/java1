@@ -27,10 +27,14 @@ public class Coder {
                         writer.write(s);
                         writer.write("\n");
                         s = "";
+                    }catch (IOException e){
+                        throw e;
                     }finally {
                         writer.close();
                     }
                 }
+            }catch (IOException e) {
+                throw e;
             }finally {
                 reader.close();
                 writer.close();
@@ -44,7 +48,8 @@ public class Coder {
                 } finally {
                     log.close();
                 }
-            } catch (IOException ie) {;
+            } catch (IOException e1){
+                System.out.println(e1.getMessage());
             }
         }
     }
