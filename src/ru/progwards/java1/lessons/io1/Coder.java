@@ -51,7 +51,7 @@ public class Coder {
     public static void main(String[] args) {
         char[] et = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '"'};
 //        System.out.println((int)et[10]);
-        codeFile("tmp.txt", "E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\Training\\tmpout.txt", et, "tmplog.txt");
+        codeFile("E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\Training\\tmp.txt", "E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\Training\\tmpout.txt", et, "E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\Training\\tmplog.txt");
     }
 
 }
