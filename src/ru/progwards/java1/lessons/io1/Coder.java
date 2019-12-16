@@ -21,7 +21,7 @@ public class Coder {
                     res = scanner.nextLine().toCharArray();
                     for (int f = 0; f < res.length; f++) {
 //                        вместо -0 поставить -33 для проверки, что бы не создавать большой массив))
-                        s += code[((int) (res[f])-33)];
+                        s += code[((int) (res[f]))];
                     }
 
                         writer.write(s);
@@ -29,14 +29,12 @@ public class Coder {
                         s = "";
                 }
 
-            }catch (IOException e) {
-                throw e;
             }finally {
                 reader.close();
                 writer.close();
             }
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             try {
                 FileWriter log = new FileWriter(logName, true);
                 try {
@@ -53,7 +51,7 @@ public class Coder {
     public static void main(String[] args) {
         char[] et = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '"'};
 //        System.out.println((int)et[10]);
-        codeFile("E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\Training\\tmp.txt", "E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\Training\\tmpout.txt", et, "E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\Training\\tmplog.txt");
+        codeFile("tmp.txt", "E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\Training\\tmpout.txt", et, "tmplog.txt");
     }
 
 }
