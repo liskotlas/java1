@@ -13,25 +13,28 @@ public class Coder {
         try {
             FileReader reader = new FileReader(inFileName);
             FileWriter writer = new FileWriter(outFileName);
-            Scanner scanner = new Scanner(reader);
-            char[] res;
-            String s = "";
-            for (int i = 0; scanner.hasNextLine(); i++) {
-                res = scanner.nextLine().toCharArray();
-                for (int f = 0; f < res.length; f++) {
-                    s += code[((int) res[f])];
+            try {
+                char[] res;
+                String s = "";
+                Scanner scanner = new Scanner(reader);
+                for (int i = 0; scanner.hasNextLine(); i++) {
+                    res = scanner.nextLine().toCharArray();
+                    for (int f = 0; f < res.length; f++) {
+//                        вместо -0 поставить -33 для проверки, что бы не создавать большой массив))
+                        s += code[((int) (res[f])-0)];
+                    }
+                    try {
+                        writer.write(s);
+                        writer.write("\n");
+                        s = "";
+                    }finally {
+                        writer.close();
+                    }
                 }
-                try {
-                    writer.write(s);
-                    writer.write("\n");
-                    s = "";
-                } catch (IOException e) {
-                    System.out.println(e.getMessage());
-                    ;
-                }
+            }finally {
+                reader.close();
+                writer.close();
             }
-            reader.close();
-            writer.close();
 
         } catch (IOException e) {
             try {
@@ -41,8 +44,7 @@ public class Coder {
                 } finally {
                     log.close();
                 }
-            } catch (IOException ie) {
-                System.out.println(ie.getMessage());
+            } catch (IOException ie) {;
             }
         }
     }
