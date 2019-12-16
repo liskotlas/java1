@@ -58,7 +58,7 @@ public class CharFilter {
 
     public static void main(String[] args) {
         try {
-            filterFile("E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\io1\\in", "E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\io1\\out", "! ,");
+            filterFile("in", "E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\io1\\out", "! ,");
         }
         catch (IOException e){
             System.out.println(e.getMessage());

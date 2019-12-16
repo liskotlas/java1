@@ -21,18 +21,14 @@ public class Coder {
                     res = scanner.nextLine().toCharArray();
                     for (int f = 0; f < res.length; f++) {
 //                        вместо -0 поставить -33 для проверки, что бы не создавать большой массив))
-                        s += code[((int) (res[f])-0)];
+                        s += code[((int) (res[f])-33)];
                     }
-                    try {
+
                         writer.write(s);
                         writer.write("\n");
                         s = "";
-                    }catch (IOException e){
-                        throw e;
-                    }finally {
-                        writer.close();
-                    }
                 }
+
             }catch (IOException e) {
                 throw e;
             }finally {
