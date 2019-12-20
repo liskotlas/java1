@@ -58,7 +58,7 @@ public class Translator {
                 string += reformatString(word) + " "; //слово из строки на проверку
             }
 
-        return string.strip();
+        return string.trim();
     }
 
     public static void main(String[] args) {
