@@ -33,7 +33,7 @@ public class Censor {
                     stringOut += word + " ";
                     reWord = "";
                 }
-                stringOut = stringOut.trim() + "\n";       //формируем строку вывода
+                stringOut = stringOut.trim();       //формируем строку вывода
             }
             try (FileWriter fileWriter = new FileWriter(inoutFileName)) {
                 fileWriter.write(stringOut);
@@ -50,23 +50,26 @@ public class Censor {
     }
 
     public static void main(String[] args) {
-        String[] obscene = new String[]{"Java", "Oracle", "Sun", "Microsystems"};
+        String[] obscene = new String[]{"Java", "Oracle", "Sun", "Microsystems", "puck"};
         censorFile("E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\io2\\Censor", obscene);
     }
 
-//    class CensorException extends Exception {
-//        public String msg;
-//        public String error;
-//        public CensorException (String fileName, String error){
-//            super();
-//            this.msg = msg;
-//            this.error = error
-//
-//    @Override
-//            public String toString() {
-//                String s = getClass().getName();
-//                String message = getLocalizedMessage();
-//                return (message != null) ? (s + ": " + message) : s;
-//            }
+    class CensorException extends Throwable {
+        public String msg;
+        public String fileName;
 
+        public CensorException(String msg, String fileName) {
+            super();
+            this.msg = msg;
+            this.fileName = fileName;
+
+
+//            @Override
+//            public String toString () {
+//                String message = msg;
+//                return this.fileName;
+//            }
+        }
+
+    }
 }
