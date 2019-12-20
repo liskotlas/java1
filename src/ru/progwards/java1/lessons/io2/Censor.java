@@ -33,7 +33,7 @@ public class Censor {
                     stringOut += word + " ";
                     reWord = "";
                 }
-                stringOut = stringOut.strip() + "\n";       //формируем строку вывода
+                stringOut = stringOut + "\n";       //формируем строку вывода
             }
             try (FileWriter fileWriter = new FileWriter(inoutFileName)) {
                 fileWriter.write(stringOut);
@@ -51,7 +51,7 @@ public class Censor {
 
     public static void main(String[] args) {
         String[] obscene = new String[]{"Java", "Oracle", "Sun", "Microsystems"};
-        censorFile("\\Java\\Eucation\\src\\ru\\progwards\\java1\\lessons\\io2\\Censor", obscene);
+        censorFile("E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\io2\\Censor", obscene);
     }
 
 //    class CensorException extends Exception {

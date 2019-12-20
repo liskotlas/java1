@@ -47,7 +47,7 @@ public class Translator {
         reStringOut = string.replace(reString, reStringOut);
 
 
-        return reStringOut.strip();
+        return reStringOut;
     }
 
     public String translate(String sentence) {
@@ -58,7 +58,7 @@ public class Translator {
                 string += reformatString(word) + " "; //слово из строки на проверку
             }
 
-        return string.strip();
+        return string;
     }
 
     public static void main(String[] args) {
