@@ -33,7 +33,7 @@ public class Censor {
                     stringOut += word + " ";
                     reWord = "";
                 }
-                stringOut = stringOut + "\n";       //формируем строку вывода
+                stringOut = stringOut.strip() + "\n";       //формируем строку вывода
             }
             try (FileWriter fileWriter = new FileWriter(inoutFileName)) {
                 fileWriter.write(stringOut);
