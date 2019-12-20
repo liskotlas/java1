@@ -21,7 +21,7 @@ public class Coder {
                     res = scanner.nextLine().toCharArray();
                     for (int f = 0; f < res.length; f++) {
 //                        вместо -0 поставить -33 для проверки, что бы не создавать большой массив))
-                        s += code[((int) (res[f]))];
+                        s += code[((int) (res[f])-33)];
                     }
 
                         writer.write(s);
