@@ -9,6 +9,7 @@ public class Censor {
 
     public static void censorFile(String inoutFileName, String[] obscene) throws CensorException {
         String stringOut = "";
+        String reWord = "";
 
         try (FileReader fileReader = new FileReader(inoutFileName)) {
             Scanner scanner = new Scanner(fileReader);
@@ -25,10 +26,14 @@ public class Censor {
 //                        }
 
                         for (String arr : obscene) {              //поиск слова в массиве
+//                            System.out.println(arr + " - arr");
                             if (word.indexOf(arr) > -1) {
-                                for (char c : arr.toCharArray())
-                                    word = word.replace(String.valueOf(c), "*");    // замена символов слова на символы *
-                                break;
+                                for (int i = 1; i<= arr.length(); i++){
+                                    reWord += "*";
+                                }
+                                    word = word.replaceAll(arr, reWord);
+                                    reWord = "";
+//                                System.out.println(word);
                             }
                         }
                         stringOut += word + " ";
@@ -53,7 +58,7 @@ public class Censor {
     }
 
     public static void main(String[] args) {
-        String[] obscene = new String[]{"two", "collect", "day", "write", "count"};
+        String[] obscene = new String[]{"two", "storey", "day", "write", "house"};
 //        String[] obscene = null;
         try {
             censorFile("E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\io2\\Censor", obscene);
