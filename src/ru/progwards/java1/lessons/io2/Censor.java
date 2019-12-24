@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Censor {
 
 
-    public static void censorFile(String inoutFileName, String[] obscene) {
+    public static void censorFile(String inoutFileName, String[] obscene) throws CensorException {
         String stringOut = "";
         String reWord = "";
 
@@ -37,13 +37,13 @@ public class Censor {
             }
             try (FileWriter fileWriter = new FileWriter(inoutFileName)) {
                 fileWriter.write(stringOut);
-            } catch (IOException e) {
-                System.out.println(e.toString());
+            } catch (Exception e) {
+                throw new CensorException(e.getMessage(), inoutFileName);
             }
 
 
         } catch (IOException e) {
-            System.out.println(e.toString());
+            throw new CensorException(e.getMessage(), inoutFileName);
         }
 
 
@@ -51,12 +51,22 @@ public class Censor {
 
     public static void main(String[] args) {
         String[] obscene = new String[]{"Java", "Oracle", "Sun", "Microsystems", "puck"};
-        censorFile("E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\io2\\Censor", obscene);
+        try {
+            censorFile("E:\\\\Education\\src\\ru\\progwards\\java1\\lessons\\io2\\Censor", obscene);
+        }catch (CensorException e){
+            System.out.println(e);
+        }
+
     }
 
-    class CensorException extends Throwable {
+    static class CensorException extends Exception {
         public String msg;
         public String fileName;
+
+        @Override
+        public String toString() {
+            return fileName + ":" + msg;
+        }
 
         public CensorException(String msg, String fileName) {
             super();
@@ -64,11 +74,6 @@ public class Censor {
             this.fileName = fileName;
 
 
-//            @Override
-//            public String toString () {
-//                String message = msg;
-//                return this.fileName;
-//            }
         }
 
     }
