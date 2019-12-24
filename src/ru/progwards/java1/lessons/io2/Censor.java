@@ -2,7 +2,6 @@ package ru.progwards.java1.lessons.io2;
 
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Censor {
@@ -10,7 +9,6 @@ public class Censor {
 
     public static void censorFile(String inoutFileName, String[] obscene) throws CensorException {
         String stringOut = "";
-        String reWord = "";
 
         try (FileReader fileReader = new FileReader(inoutFileName)) {
             Scanner scanner = new Scanner(fileReader);
@@ -18,21 +16,22 @@ public class Censor {
                 while (scanner.hasNextLine()) {                     //разбитие на строки
                     String string = scanner.nextLine();
                     for (String word : string.split(" ")) {  //разбитие строки на слова
-                        for (char c : word.toCharArray()) {         //делаем слово чистым
-                            if (Character.isAlphabetic(c)) {
-                                reWord += c;
-                            }
-                        }
+//                        for (char c : word.toCharArray()) {         //делаем слово чистым
+//                            if (Character.isAlphabetic(c)) {
+//                                reWord += c;
+//                            }
+//                            System.out.println(reWord + " - reWord");
+//
+//                        }
 
                         for (String arr : obscene) {              //поиск слова в массиве
-                            if (arr.compareTo(reWord) == 0) {
-                                for (char c : reWord.toCharArray())
+                            if (word.indexOf(arr) > -1) {
+                                for (char c : arr.toCharArray())
                                     word = word.replace(String.valueOf(c), "*");    // замена символов слова на символы *
                                 break;
                             }
                         }
                         stringOut += word + " ";
-                        reWord = "";
                     }
                     stringOut = stringOut.trim();       //формируем строку вывода
                 }
@@ -54,10 +53,10 @@ public class Censor {
     }
 
     public static void main(String[] args) {
-//        String[] obscene = new String[]{"Java", "Oracle", "Sun", "Microsystems", "puck"};
-        String[] obscene = null;
+        String[] obscene = new String[]{"two", "collect", "day", "write", "count"};
+//        String[] obscene = null;
         try {
-            censorFile(null, null);
+            censorFile("E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\io2\\Censor", obscene);
         }catch (CensorException e){
             System.out.println(e.toString());
         }
