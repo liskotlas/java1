@@ -46,7 +46,7 @@ public class Censor {
             }
 
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             throw new CensorException(e.getMessage(), inoutFileName);
         }
 
@@ -57,7 +57,7 @@ public class Censor {
 //        String[] obscene = new String[]{"Java", "Oracle", "Sun", "Microsystems", "puck"};
         String[] obscene = null;
         try {
-            censorFile("E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\io2\\Censor", obscene);
+            censorFile(null, null);
         }catch (CensorException e){
             System.out.println(e.toString());
         }

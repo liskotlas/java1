@@ -76,7 +76,9 @@ public class Finder {
             strings.add(((ArrayList<String>) namesStr).get(namesStr.size()-1));
         }
         for (int i = 0; i < namesStr.size(); i++){
-//            if (strings.contains((ArrayList<String>) namesStr).get(i)))
+            if (strings.contains(((ArrayList<String>) namesStr).get(i))){
+
+            }
         }
 
         return null;
