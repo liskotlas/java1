@@ -69,36 +69,51 @@ public class Finder {
         return true;
     }
 
-    public static String findSimilar(Collection<String> names){
-        Collection <String> namesStr = new ArrayList<>(names);
-        Collection <String> strings = new ArrayList<>();
-        if (names.isEmpty() == false){
-            strings.add(((ArrayList<String>) namesStr).get(namesStr.size()-1));
-        }
-        for (int i = 0; i < namesStr.size(); i++){
-            if (strings.contains(((ArrayList<String>) namesStr).get(i))){
-
+    public static String findSimilar(Collection<String> names) {
+        Collection<String> namesIn = new ArrayList<>(names);
+        Collection<String> strings = new ArrayList<>();
+        int res = 1;
+        int res1 = 0;
+        String out = "";
+        for (int i = 0; i < namesIn.size(); i++) {
+            if (strings.contains(((ArrayList<String>) namesIn).get(i))) {
+                continue;
             }
+            for (int f = i + 1; f < namesIn.size(); f++) {
+                if (((ArrayList<String>) namesIn).get(i).compareTo(((ArrayList<String>) namesIn).get(f)) == 0) {
+                    ++res;
+                }
+            }
+            if (res > res1) {
+                out = ((ArrayList<String>) namesIn).get(i);
+                res1 = res;
+            }
+            strings.add(((ArrayList<String>) namesIn).get(i));
+            res = 1;
         }
 
-        return null;
+        return out + ":" + res1;
     }
 
     public static void main(String[] args) {
         Finder finder = new Finder();
-        Collection<Integer> collection = new ArrayList<>();
-        collection.add(1);
-        collection.add(2);
-        collection.add(3);
-        collection.add(4);
-        collection.add(5);
-        collection.add(0);
-        collection.add(7);
-        collection.add(8);
-        collection.add(9);
-        collection.add(10);
+        Collection<String> collection = new ArrayList<>();
+        collection.add("Петя");
+        collection.add("Вася");
+        collection.add("Петя");
+        collection.add("Вася");
+        collection.add("Вася");
+        collection.add("Миша");
+        collection.add("Петя");
+        collection.add("Вася");
+        collection.add("Миша");
+        collection.add("Вася");
+        collection.add("Петя");
+        collection.add("Миша");
+        collection.add("Петя");
 
-        System.out.println(findSequence(collection));
+
+        System.out.println(findSimilar(collection));
 
 
     }
