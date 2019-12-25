@@ -21,10 +21,10 @@ public class Creator {
 
     public static Collection<Integer> fill3(int n) {
         List<Integer> integerCollections = new ArrayList<>();
-        for (int i = 0; i < n ; i ++) {
-            integerCollections.add(i*3, i);
-            integerCollections.add(i*3+1, (i)*(i));
-            integerCollections.add(i*3+2, (i)*(i)*(i));
+        for (int i = 0; i < n ; i += 3) {
+            integerCollections.add(i, i);
+            integerCollections.add(i+1, (i)*(i));
+            integerCollections.add(i+2, (i)*(i)*(i));
         }
         return integerCollections;
     }

@@ -68,31 +68,56 @@ public class Finder {
         }
         return true;
     }
+//          Вариант, согласно первого условия задачи)))
+//    public static String findSimilar(Collection<String> names) {
+////        Collection<String> namesIn = new ArrayList<>(names);
+////        Collection<String> strings = new ArrayList<>();
+////        int res = 1;
+////        int res1 = 0;
+////        String out = "";
+////        for (int i = 0; i < namesIn.size(); i++) {
+////            if (strings.contains(((ArrayList<String>) namesIn).get(i))) {
+////                continue;
+////            }
+////            for (int f = i + 1; f < namesIn.size(); f++) {
+////                if (((ArrayList<String>) namesIn).get(i).compareTo(((ArrayList<String>) namesIn).get(f)) == 0) {
+////                    ++res;
+////                }
+////            }
+////            if (res > res1) {
+////                out = ((ArrayList<String>) namesIn).get(i);
+////                res1 = res;
+////            }
+////            strings.add(((ArrayList<String>) namesIn).get(i));
+////            res = 1;
+////        }
+////
+////        return out + ":" + res1;
+////    }
 
     public static String findSimilar(Collection<String> names) {
         Collection<String> namesIn = new ArrayList<>(names);
-        Collection<String> strings = new ArrayList<>();
         int res = 1;
-        int res1 = 0;
-        String out = "";
-        for (int i = 0; i < namesIn.size(); i++) {
-            if (strings.contains(((ArrayList<String>) namesIn).get(i))) {
-                continue;
+        int resOut = 0;
+        String result = "";
+        String resultOut = "";
+        for (int i = 0; i < namesIn.size() - 1; i++) {
+            if (res > 1 && (((ArrayList<String>) namesIn).get(i).compareTo(((ArrayList<String>) namesIn).get(i + 1)) != 0)) {
+                resOut = res;
+                resultOut = result;
+                res = 1;
+                result = "";
             }
-            for (int f = i + 1; f < namesIn.size(); f++) {
-                if (((ArrayList<String>) namesIn).get(i).compareTo(((ArrayList<String>) namesIn).get(f)) == 0) {
-                    ++res;
-                }
-            }
-            if (res > res1) {
-                out = ((ArrayList<String>) namesIn).get(i);
-                res1 = res;
-            }
-            strings.add(((ArrayList<String>) namesIn).get(i));
-            res = 1;
-        }
 
-        return out + ":" + res1;
+            if (((ArrayList<String>) namesIn).get(i).compareTo(((ArrayList<String>) namesIn).get(i + 1)) == 0) {
+                res++;
+                result = ((ArrayList<String>) namesIn).get(i);
+            }
+        }
+        if (res > resOut) {
+            return result + ":" + res;
+        }
+        return resultOut + ":" + resOut;
     }
 
     public static void main(String[] args) {
@@ -107,10 +132,10 @@ public class Finder {
         collection.add("Петя");
         collection.add("Вася");
         collection.add("Миша");
-        collection.add("Вася");
-        collection.add("Петя");
         collection.add("Миша");
-        collection.add("Петя");
+        collection.add("Миша");
+        collection.add("Миша");
+        collection.add("Миша");
 
 
         System.out.println(findSimilar(collection));
