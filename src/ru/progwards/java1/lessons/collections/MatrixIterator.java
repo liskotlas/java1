@@ -11,17 +11,19 @@ public class MatrixIterator<T> implements Iterator<T> {
     MatrixIterator(T[][] array) {
         this.array = array;
         indexArrX = -1;
-        indexArrY = -1;
+        indexArrY = 0;
     }
 
     @Override
     public boolean hasNext() {
-        if (indexArrX >= array[indexArrY].length) {
+        if (indexArrX + 1 >= array[indexArrY].length) {
             ++indexArrY;
             indexArrX = -1;
-            return (indexArrX + 1) < array[indexArrY].length && (indexArrY + 1) < array.length && array[indexArrX + 1] != null ? true : false;
         }
-        return false;
+        if (indexArrY >= array.length) {
+            return false;
+        }
+        return (indexArrX + 1) < array[indexArrY].length && (indexArrY) < array.length && array[indexArrY][indexArrX + 1] != null ? true : false;
     }
 
     @Override
@@ -32,9 +34,9 @@ public class MatrixIterator<T> implements Iterator<T> {
     }
 
     public static void main(String[] args) {
-        Integer [][] matrix = {{0, 1,2,3,4},{10,11,12,13,14}};
-        MatrixIterator <Integer> matrixIterator = new MatrixIterator<>(matrix);
-        while (matrixIterator.hasNext()){
+        Integer[][] matrix = {{0, 1, 2, 3, 4, 11, 15, 1, 6, 8, 9, 5, 6, 4, 9, 0}, {10, 11, 12, 13, 14}};
+        MatrixIterator<Integer> matrixIterator = new MatrixIterator<>(matrix);
+        while (matrixIterator.hasNext()) {
             System.out.println(matrixIterator.next());
         }
     }
