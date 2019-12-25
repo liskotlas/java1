@@ -33,9 +33,9 @@ public class MatrixIterator<T> implements Iterator<T> {
 
     public static void main(String[] args) {
         Integer [][] matrix = {{0, 1,2,3,4},{10,11,12,13,14}};
-        ArrayIterator <Integer> arrayIterator = new ArrayIterator<Integer>(matrix);
-        while (arrayIterator.hasNext()){
-            System.out.println(arrayIterator.next());
+        MatrixIterator <Integer> matrixIterator = new MatrixIterator<>(matrix);
+        while (matrixIterator.hasNext()){
+            System.out.println(matrixIterator.next());
         }
     }
 }
