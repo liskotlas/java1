@@ -39,32 +39,32 @@ public class Java_11 {
     }
 
     public static void main(String[] args) {
-//        List<Integer> linkedList = new LinkedList();
-//        for (int i = 0; i < 5; i++)
-//            linkedList.add(i);
-//
-//        for (ListIterator<Integer> listIterator = linkedList.listIterator(); listIterator.hasNext(); ) {
-//            Integer n = listIterator.next();
-//            if (n % 2 != 0)
-//                listIterator.remove();
-//            else
-//                listIterator.add(n * 2);
-//        }
-//
-//            System.out.println(linkedList);
-//        }
+        List<Integer> linkedList = new LinkedList();
+        for (int i = 0; i < 5; i++)
+            linkedList.add(i);
 
-        ArrayList arrayList = new ArrayList();
-        for (int i = 0; i < 201; i+=10) {
-            arrayList.add(i);
+        for (ListIterator<Integer> listIterator = linkedList.listIterator(); listIterator.hasNext(); ) {
+            Integer n = listIterator.next();
+            if (n % 2 != 0)
+                listIterator.remove();
+            else
+                listIterator.add(n * 2);
         }
-        ListIterator<Integer> listIterator = arrayList.listIterator();
-        System.out.println(arrayList);
-        iterator3(listIterator);
-        System.out.println(arrayList);
+
+            System.out.println(linkedList);
+        }
+//
+//        ArrayList arrayList = new ArrayList();
+//        for (int i = 0; i < 201; i+=10) {
+//            arrayList.add(i);
+//        }
+//        ListIterator<Integer> listIterator = arrayList.listIterator();
+//        System.out.println(arrayList);
+//        iterator3(listIterator);
+//        System.out.println(arrayList);
 
 
-    }
+//    }
 }
 
 
