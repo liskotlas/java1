@@ -25,11 +25,10 @@ public class SetOperations {
     }
 
     public static Set<Integer> symDifference(final Set<Integer> set1, final Set<Integer> set2){
-        Set<Integer>res1 =set1;
+        Set<Integer>res1 =new TreeSet<>();
+        res1.addAll(set1);
         Set<Integer>res2 = new TreeSet<>();
-        for (Integer a: set2){
-            res2.add(a);
-        }
+        res2.addAll(set2);
 
         res2.retainAll(set1);
 
@@ -42,7 +41,7 @@ public class SetOperations {
     public static void main(String[] args) {
         Set <Integer> set1 = new TreeSet<>();
         Set <Integer> set2 = new TreeSet<>();
-        set1.add(1);
+
         set1.add(2);
         set1.add(3);
         set1.add(4);
@@ -50,14 +49,12 @@ public class SetOperations {
         set1.add(6);
         set1.add(7);
         set1.add(9);
-        set1.add(10);
 
+
+        set2.add(0);
         set2.add(1);
-        set2.add(2);
         set2.add(4);
-        set2.add(5);
         set2.add(6);
-        set2.add(7);
         set2.add(8);
         set2.add(9);
         set2.add(10);
