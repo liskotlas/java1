@@ -8,6 +8,13 @@ public class Product {
         this.code = code;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "code='" + code + '\'' +
+                '}';
+    }
+
     public String getCode(){
         return code;
     }

@@ -1,10 +1,7 @@
 package ru.progwards.java1.lessons.sets;
 
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class ProductAnalytics {
 
@@ -18,14 +15,65 @@ public class ProductAnalytics {
     }
 
     public Set<Product> existInAll() {
-        Set<Product> result = (Set<Product>) products;
-        Set<Product> res1 = null;
+        Set<Product> result = new HashSet<>();
+        result.addAll(products);
         for (Shop shop : shops) {
-            for (Product productList : products) {
                 result.retainAll(shop.getProducts());
             }
+        return result;
+    }
+
+    public Set<Product> existAtListInOne(){
+        Set<Product> result = new HashSet<>();
+        for (Shop shop : shops) {
+            result.addAll(shop.getProducts());
         }
         return result;
+    }
+
+    public Set<Product> notExistInShops(){
+        Set<Product> result = new HashSet<>();
+        Set<Product> productsList = new HashSet<>();
+        productsList.addAll(products);
+        for (Shop shop : shops) {
+            result.addAll(shop.getProducts());
+        }
+        productsList.removeAll(result);
+        return productsList;
+    }
+
+    public Set<Product> existOnlyInOne(){
+        Set <Product> resSum = new HashSet<>();
+        Set <Product> resUn = new HashSet<>();
+        Set <Product> resObch = new HashSet<>();
+        Set <Product> resShop2 = new HashSet<>();
+        Set <Product> productsSet = new HashSet<>();
+
+        for (Shop shop : shops){
+            if (resSum.isEmpty()){
+                resSum.addAll(shop.getProducts());
+//                System.out.println("Первый " + resSum);
+                continue;
+            }
+            resShop2.addAll(shop.getProducts());
+//            System.out.println("Следующий " + resShop2);
+
+            resSum.addAll(resShop2);
+//            System.out.println("Сумма обоих" + resSum);
+            resObch.clear();
+            resObch.addAll(resSum);
+
+            resObch.retainAll(shop.getProducts());
+//            System.out.println("Общие " + resObch);
+            resUn.clear();
+            resUn.addAll(resSum);
+            resUn.removeAll(resObch);
+//            System.out.println("Уникальные " + resUn);
+//            res1.clear();
+//            res1.addAll(res2);
+//            res2.clear();
+        }
+        return resUn;
     }
 
 
@@ -42,39 +90,33 @@ public class ProductAnalytics {
         Product product8 = new Product("0008");
         Product product9 = new Product("0009");
         Product product10 = new Product("0010");
+        Product product11 = new Product("0011");
 
-        List <Product> one = (List<Product>) new TreeSet<Product>();
+        List <Product> one = new ArrayList<>();
         one.add(product1);
         one.add(product2);
         one.add(product3);
-        one.add(product4);
-        List <Product> two = (List<Product>) new TreeSet<Product>();
+        one.add(product8);
+        List <Product> two = new ArrayList<>();
         two.add(product4);
         two.add(product5);
         two.add(product6);
-        two.add(product7);
-        List <Product> three = (List<Product>) new TreeSet<Product>();
-        two.add(product7);
         two.add(product8);
-        two.add(product9);
-        two.add(product10);
-
-        List<Product> shopListProducts1 = (List<Product>) new TreeSet<Product>();
-        shopListProducts1.add((Product) one);
-
-        List <Product> shopListProducts2 = (List<Product>) new TreeSet<Product>();
-        shopListProducts1.add((Product) two);
-
-        List <Product> shopListProducts3 = (List<Product>) new TreeSet<Product>();
-        shopListProducts1.add((Product) three);
-
-        Shop shop1 = new Shop(shopListProducts1);
-        Shop shop2 = new Shop(shopListProducts2);
-        Shop shop3 = new Shop(shopListProducts3);
+        List <Product> three = new ArrayList<>();
+        three.add(product7);
+        three.add(product8);
+        three.add(product9);
+        three.add(product10);
 
 
 
-        List<Product> products = (List<Product>) new TreeSet<Product>();
+        Shop shop1 = new Shop(one);
+        Shop shop2 = new Shop(two);
+        Shop shop3 = new Shop(three);
+
+
+
+        List<Product> products = new ArrayList<>();
         products.add(product1);
         products.add(product2);
         products.add(product3);
@@ -85,14 +127,15 @@ public class ProductAnalytics {
         products.add(product8);
         products.add(product9);
         products.add(product10);
+        products.add(product11);
 
-        List <Shop> shops = (List<Shop>) new TreeSet<Shop>();
+        List <Shop> shops = new ArrayList<>();
         shops.add(shop1);
         shops.add(shop2);
         shops.add(shop3);
 
         ProductAnalytics productAnalytics1 = new ProductAnalytics(products, shops);
-        System.out.println(productAnalytics1.existInAll());
+        System.out.println(productAnalytics1.existOnlyInOne());
     }
 }
 

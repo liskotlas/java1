@@ -14,4 +14,11 @@ public class Shop {
     public List<Product> getProducts(){
         return products;
     }
+
+    @Override
+    public String toString() {
+        return "Shop{" +
+                "products=" + products +
+                '}';
+    }
 }
