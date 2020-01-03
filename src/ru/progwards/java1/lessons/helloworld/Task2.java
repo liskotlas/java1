@@ -6,7 +6,7 @@ public class Task2 {
         int z;
         z = x + y;
         System.out.println("Вызвана функция subtraction() с параметрами x = " + x + ", y = " + y);
-        System.out.println("Результат z = " + z);
+        System.out.print("Результат z = " + z);
     }
 
     public static void main(String[] args) {
