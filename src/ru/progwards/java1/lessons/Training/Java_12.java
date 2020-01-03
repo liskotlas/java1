@@ -76,13 +76,16 @@ class Round extends Figure {
         return diameter;
     }
 
-
+    public static void cset() {
+        Set fiboSet1000 =
+                Set.of(0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987);
+        int sum = 0;
+        for (int i = 2; i < 10; i++)
+            sum += fiboSet1000.contains(i) ? 1 : 0;
+        System.out.println(sum);
+    }
     public static void main(String[] args) {
-        Square square = new Square(1);
-
-        Round round = new Round(1);
-
-        System.out.println(square.figDetect(round));
+        cset();
     }
 }
 
@@ -112,9 +115,6 @@ class User {
                 return Integer.compare(o1.id, o2.id) * -1;
             }
         });
-//            userTreeSet.add(user1);
-//            userTreeSet.add(user2);
-//        System.out.println(userTreeSet.toString());
             return (TreeSet<User>) userTreeSet;
     }
 

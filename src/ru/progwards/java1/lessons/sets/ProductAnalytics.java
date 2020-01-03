@@ -43,37 +43,49 @@ public class ProductAnalytics {
     }
 
     public Set<Product> existOnlyInOne(){
-        Set <Product> resSum = new HashSet<>();
-        Set <Product> resUn = new HashSet<>();
-        Set <Product> resObch = new HashSet<>();
-        Set <Product> resShop2 = new HashSet<>();
-        Set <Product> productsSet = new HashSet<>();
+        Set <Product> first = new HashSet<>(); //Первое множество
+        Set <Product> sumRes = new HashSet<>(); // Сумма всех множеств
+        Set <Product> isklRes = new HashSet<>(); // Сумма пересечений всех множеств
+        Set <Product> shopPrev = new HashSet<>(); // множество предыдущего магазина
+        Set <Product> shopNow = new HashSet<>(); // множество текущего магазина
+        Set <Product> resSum = new HashSet<>(); // промежуточное множество суммы
+        Set<Product> iskSum = new HashSet<>(); // промежуточное множество исключений
+
 
         for (Shop shop : shops){
-            if (resSum.isEmpty()){
-                resSum.addAll(shop.getProducts());
+            //первое множество
+            if (first.isEmpty()){
+                first.addAll(shop.getProducts());
+                shopPrev.addAll(shop.getProducts());
 //                System.out.println("Первый " + resSum);
                 continue;
             }
-            resShop2.addAll(shop.getProducts());
-//            System.out.println("Следующий " + resShop2);
+//
 
-            resSum.addAll(resShop2);
-//            System.out.println("Сумма обоих" + resSum);
-            resObch.clear();
-            resObch.addAll(resSum);
-
-            resObch.retainAll(shop.getProducts());
-//            System.out.println("Общие " + resObch);
-            resUn.clear();
-            resUn.addAll(resSum);
-            resUn.removeAll(resObch);
-//            System.out.println("Уникальные " + resUn);
-//            res1.clear();
-//            res1.addAll(res2);
-//            res2.clear();
+////            вычисляем сумму двух множеств
+//            resSum.addAll(shopPrev);
+//            resSum.addAll(shop.getProducts());
+//
+//
+//            resShop2.addAll(shop.getProducts());
+////            System.out.println("Следующий " + resShop2);
+//
+//            resSum.addAll(resShop2);
+////            System.out.println("Сумма обоих" + resSum);
+//            resObch.clear();
+//            resObch.addAll(resSum);
+//
+//            resObch.retainAll(shop.getProducts());
+////            System.out.println("Общие " + resObch);
+//            resUn.clear();
+//            resUn.addAll(resSum);
+//            resUn.removeAll(resObch);
+////            System.out.println("Уникальные " + resUn);
+////            res1.clear();
+////            res1.addAll(res2);
+////            res2.clear();
         }
-        return resUn;
+        return null;
     }
 
 
