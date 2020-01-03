@@ -43,82 +43,57 @@ public class ProductAnalytics {
     }
 
     public Set<Product> existOnlyInOne(){
-        Set <Product> first = new HashSet<>(); //Первое множество
-        Set <Product> sumRes = new HashSet<>(); // Сумма всех множеств
-        Set <Product> isklRes = new HashSet<>(); // Сумма пересечений всех множеств
-        Set <Product> shopPrev = new HashSet<>(); // множество предыдущего магазина
-        Set <Product> shopNow = new HashSet<>(); // множество текущего магазина
-        Set <Product> resSum = new HashSet<>(); // промежуточное множество суммы
-        Set<Product> iskSum = new HashSet<>(); // промежуточное множество исключений
+        Set <Product> result = new HashSet<>();
+        int score = 0;
 
 
-        for (Shop shop : shops){
-            //первое множество
-            if (first.isEmpty()){
-                first.addAll(shop.getProducts());
-                shopPrev.addAll(shop.getProducts());
-//                System.out.println("Первый " + resSum);
-                continue;
+        for (Product product : products){
+            for (Shop shop : shops){
+                if (shop.getProducts().contains(product)) {
+                    score++;
+                }
+                if (score > 1){
+                    score = 0;
+                    break;
+                }
             }
-//
-
-////            вычисляем сумму двух множеств
-//            resSum.addAll(shopPrev);
-//            resSum.addAll(shop.getProducts());
-//
-//
-//            resShop2.addAll(shop.getProducts());
-////            System.out.println("Следующий " + resShop2);
-//
-//            resSum.addAll(resShop2);
-////            System.out.println("Сумма обоих" + resSum);
-//            resObch.clear();
-//            resObch.addAll(resSum);
-//
-//            resObch.retainAll(shop.getProducts());
-////            System.out.println("Общие " + resObch);
-//            resUn.clear();
-//            resUn.addAll(resSum);
-//            resUn.removeAll(resObch);
-////            System.out.println("Уникальные " + resUn);
-////            res1.clear();
-////            res1.addAll(res2);
-////            res2.clear();
+            if (score == 1){
+                result.add(product);
+                score = 0;
+            }
         }
-        return null;
+        return result;
     }
 
 
 
     public static void main(String[] args) {
 
-        Product product1 = new Product("0001");
-        Product product2 = new Product("0002");
-        Product product3 = new Product("0003");
-        Product product4 = new Product("0004");
-        Product product5 = new Product("0005");
-        Product product6 = new Product("0006");
-        Product product7 = new Product("0007");
-        Product product8 = new Product("0008");
-        Product product9 = new Product("0009");
-        Product product10 = new Product("0010");
-        Product product11 = new Product("0011");
+        Product product1 = new Product("art-1");
+        Product product2 = new Product("art-2");
+        Product product3 = new Product("art-3");
+        Product product4 = new Product("art-4");
+        Product product5 = new Product("art-5");
+        Product product6 = new Product("art-6");
+        Product product7 = new Product("art-7");
+        Product product8 = new Product("art-8");
+        Product product9 = new Product("art-9");
+        Product product10 = new Product("art-10");
 
         List <Product> one = new ArrayList<>();
-        one.add(product1);
-        one.add(product2);
-        one.add(product3);
-        one.add(product8);
+        one.add(product4);
+        one.add(product6);
+        one.add(product7);
+        one.add(product9);
         List <Product> two = new ArrayList<>();
+        two.add(product1);
         two.add(product4);
-        two.add(product5);
-        two.add(product6);
         two.add(product8);
+        two.add(product10);
         List <Product> three = new ArrayList<>();
-        three.add(product7);
+        three.add(product1);
+        three.add(product3);
         three.add(product8);
-        three.add(product9);
-        three.add(product10);
 
 
 
@@ -139,7 +114,6 @@ public class ProductAnalytics {
         products.add(product8);
         products.add(product9);
         products.add(product10);
-        products.add(product11);
 
         List <Shop> shops = new ArrayList<>();
         shops.add(shop1);
