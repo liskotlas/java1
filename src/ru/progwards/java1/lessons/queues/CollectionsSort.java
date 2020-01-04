@@ -47,12 +47,19 @@ public class CollectionsSort {
         System.out.println("myTime = " + timeMy);
         System.out.println(("MinTime = " + timeMin));
         if (timeMy < timeMin){
-            return new ArrayList<String>(List.of("mySort", "minSort"));
+            ArrayList<String> result = new ArrayList<>();
+            result.add("mySort");
+            result.add("minSort");
+            return result;
             }
         if (timeMin < timeMy){
-            return new ArrayList<String>(List.of("minSort" , "mySort"));
-        }
-        return new ArrayList<String>(List.of("collSort"));
+            ArrayList<String> result = new ArrayList<>();
+            result.add("minSort");
+            result.add("mySort");
+            return result;        }
+        ArrayList<String> result = new ArrayList<>();
+        result.add("collSort");
+        return result;
 
     }
 
