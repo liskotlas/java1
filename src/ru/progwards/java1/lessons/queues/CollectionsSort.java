@@ -39,7 +39,7 @@ public class CollectionsSort {
     public static Collection<String> compareSort() {
 
         Collection<Integer> integerCollection = new ArrayList<Integer>();
-        for (int i = 0; i < 50_000; i++) {
+        for (int i = 0; i < 5_000; i++) {
             integerCollection.add(i);
         }
 
