@@ -19,7 +19,10 @@ public class StackCalc {
     }
 
     public void sub() {
-        deque.push(-(double) deque.pop() + (double) deque.pop());
+
+//        deque.push(- (double) deque.pop() + (double) deque.pop());
+
+        deque.push( (double) deque.pop() - (double) deque.pop());
     }
 
     public void mul() {
@@ -27,7 +30,10 @@ public class StackCalc {
     }
 
     public void div() {
-        deque.push(1 / (double) deque.pop() * (double) deque.pop());
+
+        deque.push((double) deque.pop() * (1 / (double) deque.pop()));
+
+//        deque.push(1 / (double) deque.pop() * (double) deque.pop());
     }
 }
 
@@ -70,7 +76,14 @@ class Calculate {
     }
 
     public static void main(String[] args) {
-        System.out.println(calculation2());
+        StackCalc stackCalc = new StackCalc();
+        stackCalc.push(8.0);
+        stackCalc.push(6.0);
+        stackCalc.push(5.0);
+
+        stackCalc.div();
+        System.out.println(stackCalc.pop());
+        System.out.println(stackCalc.pop());
     }
 }
 

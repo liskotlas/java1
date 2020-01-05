@@ -2,7 +2,6 @@ package ru.progwards.java1.lessons.queues;
 
 import java.util.*;
 
-
 public class CollectionsSort {
 
     public static void mySort(Collection<Integer> data) {
@@ -29,10 +28,18 @@ public class CollectionsSort {
         data.addAll(integerCollection);
     }
 
-    public static Collection<String> compareSort(){
+    static void collSort(Collection<Integer> data) {
+
+        ArrayList<Integer> list = new ArrayList<>(data);
+        Collections.sort(list);
+        data.clear();
+        data.addAll(list);
+    }
+
+    public static Collection<String> compareSort() {
 
         Collection<Integer> integerCollection = new ArrayList<Integer>();
-        for (int i = 0; i< 50_000; i++){
+        for (int i = 0; i < 50_000; i++) {
             integerCollection.add(i);
         }
 
@@ -44,23 +51,44 @@ public class CollectionsSort {
         minSort(integerCollection);
         timeMin = System.currentTimeMillis() - timeMin;
 
+        long timeSort = System.currentTimeMillis();
+        collSort(integerCollection);
+        timeSort = System.currentTimeMillis() - timeSort;
         System.out.println("myTime = " + timeMy);
-        System.out.println(("MinTime = " + timeMin));
-        if (timeMy < timeMin){
-            ArrayList<String> result = new ArrayList<>();
-            result.add("mySort");
-            result.add("minSort");
-            return result;
-            }
-        if (timeMin < timeMy){
-            ArrayList<String> result = new ArrayList<>();
-            result.add("minSort");
-            result.add("mySort");
-            return result;        }
+        System.out.println("MinTime = " + timeMin);
+        System.out.println("CollTime = " + timeSort);
         ArrayList<String> result = new ArrayList<>();
-        result.add("collSort");
+        if (timeMin < timeMy && timeMin < timeSort && timeMy < timeSort) {
+            result.add("minSort");
+            result.add("mySort");
+            result.add("collSort");
+        }
+        if (timeMin < timeMy && timeMin < timeSort && timeMy > timeSort) {
+            result.add("minSort");
+            result.add("collSort");
+            result.add("mySort");
+        }
+        if (timeMin > timeMy && timeMin > timeSort && timeMy > timeSort) {
+            result.add("collSort");
+            result.add("mySort");
+            result.add("minSort");
+        }
+        if (timeMin < timeMy && timeMin > timeSort && timeMy > timeSort) {
+            result.add("collSort");
+            result.add("minSort");
+            result.add("mySort");
+        }
+        if (timeMin > timeMy && timeMin > timeSort && timeMy < timeSort) {
+            result.add("mySort");
+            result.add("collSort");
+            result.add("minSort");
+        }
+        if (timeMin > timeMy && timeMin < timeSort && timeMy < timeSort) {
+            result.add("mySort");
+            result.add("minSort");
+            result.add("collSort");
+        }
         return result;
-
     }
 
     public static void main(String[] args) {
