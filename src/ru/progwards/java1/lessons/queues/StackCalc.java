@@ -20,9 +20,9 @@ public class StackCalc {
 
     public void sub() {
 
-//        deque.push(- (double) deque.pop() + (double) deque.pop());
+        deque.push(- (double) deque.pop() + (double) deque.pop());
 
-        deque.push( (double) deque.pop() - (double) deque.pop());
+//        deque.push( (double) deque.pop() - (double) deque.pop());
     }
 
     public void mul() {
@@ -30,10 +30,12 @@ public class StackCalc {
     }
 
     public void div() {
+        double a = (float) deque.pop();
+        double b  = (float) deque.pop();
 
-        deque.push((double) deque.pop() * (1 / (double) deque.pop()));
+//        deque.push((double) deque.pop() * (1 / (double) deque.pop()));
 
-//        deque.push(1 / (double) deque.pop() * (double) deque.pop());
+        deque.push((float) b / (float) a);
     }
 }
 
