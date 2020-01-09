@@ -2,9 +2,11 @@ package ru.progwards.java1.lessons.queues;
 
 import java.util.ArrayDeque;
 
+import static java.lang.Double.valueOf;
+
 public class StackCalc {
 
-    ArrayDeque deque = new ArrayDeque();
+    ArrayDeque <Double> deque = new ArrayDeque();
 
     public void push(double value) {
         deque.push(value);
@@ -30,12 +32,12 @@ public class StackCalc {
     }
 
     public void div() {
-        double a = (float) deque.pop();
-        double b  = (float) deque.pop();
+        float a = (float) deque.pop().doubleValue();
+        float b = (float) deque.pop().doubleValue();
 
 //        deque.push((double) deque.pop() * (1 / (double) deque.pop()));
 
-        deque.push((float) b / (float) a);
+        deque.push(Double.valueOf(b /a));
     }
 }
 
@@ -73,19 +75,16 @@ class Calculate {
         stackCalc.push(12.1);
         stackCalc.sub();
         stackCalc.div();
+        System.out.println(stackCalc.pop());
         stackCalc.add();
         return stackCalc.pop();
     }
 
     public static void main(String[] args) {
         StackCalc stackCalc = new StackCalc();
-        stackCalc.push(8.0);
-        stackCalc.push(6.0);
-        stackCalc.push(5.0);
+        System.out.println(calculation1());
+        System.out.println(calculation2());
 
-        stackCalc.div();
-        System.out.println(stackCalc.pop());
-        System.out.println(stackCalc.pop());
     }
 }
 
