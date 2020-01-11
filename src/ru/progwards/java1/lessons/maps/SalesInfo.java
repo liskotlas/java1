@@ -4,9 +4,9 @@ import java.io.FileReader;
 import java.util.*;
 
 public class SalesInfo {
-    static ArrayList<String[]> arrayList = new ArrayList<>();
+    ArrayList<String[]> arrayList = new ArrayList<>();
 
-    public static int loadOrders(String fileName) {
+    public int loadOrders(String fileName) {
 
         int i = 0;
 
@@ -36,15 +36,11 @@ public class SalesInfo {
                         i = 0;
                         continue;
                     }
-//                    System.out.println(Arrays.deepToString(words));
-                    arrayList.add(words);
 
-//                    System.out.println(Arrays.deepToString(arrayList.get(aL)));
-//                    aL++;
+                    arrayList.add(words);
                     i = 0;
                 }
                 for (String[] s : arrayList) {
-//                    System.out.println(Arrays.deepToString(s));
                 }
             } catch (Exception e) {
                 System.out.println(e.getMessage());
@@ -52,32 +48,49 @@ public class SalesInfo {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-//        for (String[] s : arrayList){
-//            System.out.println(Arrays.deepToString(s));
-//        }
         return arrayList.size();
     }
 
-    public static Map<String, Double> getGoods() {
+    public Map<String, Double> getGoods() {
         Map<String, Double> result = new TreeMap<>();
         for (int i = 0; i < arrayList.size(); i++) {
             String[] s = arrayList.get(i);
-//            System.out.println(Arrays.deepToString(arrayList.get(i)));
             if (result.containsKey(arrayList.get(i)[1])) {
-                result.put(s[1], result.get(s[1]) + Double.parseDouble(s[2]) * Double.parseDouble(s[3]));
+                result.put(s[1], result.get(s[1]) + Double.parseDouble(s[3]));
             }
-            result.putIfAbsent(s[1], Double.parseDouble(s[2]) * Double.parseDouble(s[3]));
+            result.putIfAbsent(s[1], Double.parseDouble(s[3]));
+        }
+        return result;
+    }
+
+    public Map<String, AbstractMap.SimpleEntry<Double, Integer>> getCustomers(){
+        Map<String, AbstractMap.SimpleEntry<Double, Integer>> result =  new TreeMap<>();
+        for (int i = 0; i < arrayList.size(); i++){
+            String[] s = arrayList.get(i);
+            if (result.containsKey(s[0])){
+
+                var simpleEntry = result.get(s[0]);
+                result.put(s[0], new AbstractMap.SimpleEntry<>(simpleEntry.getKey() + Double.parseDouble (s[3]), (simpleEntry.getValue() + Integer.parseInt(s[2]))));
+            }
+            result.putIfAbsent(s[0], new AbstractMap.SimpleEntry<>(Double.parseDouble(s[3]),Integer.parseInt(s[2])));
         }
         return result;
     }
 
 
     public static void main(String[] args) {
-        System.out.println(loadOrders("E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\maps\\Test"));
+        SalesInfo salesInfo = new SalesInfo();
+        System.out.println(salesInfo.loadOrders("E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\maps\\Test") + "\n");
 
-        for (var entry : getGoods().entrySet()) {
+
+        for (var entry : salesInfo.getGoods().entrySet()) {
             System.out.println(entry);
-//        }
+        }
+        System.out.println();
+
+
+        for (var entry : salesInfo.getCustomers().entrySet()) {
+            System.out.println(entry);
         }
     }
 }

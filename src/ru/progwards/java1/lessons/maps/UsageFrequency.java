@@ -8,12 +8,12 @@ import java.util.TreeMap;
 
 public class UsageFrequency {
 
-    static Map<Character, Integer> getLetters = new HashMap<>();
-    static Map<String, Integer> getWords = new TreeMap<>();
+    Map<Character, Integer> getLetters = new HashMap<>();
+    Map<String, Integer> getWords = new TreeMap<>();
 
-    static String string = "";
+    String string = "";
 
-    public static void processFile(String fileName) {
+    public void processFile(String fileName) {
 
         try (FileReader fileReader = new FileReader(fileName)) {
             try (Scanner scanner = new Scanner(fileReader)) {
@@ -32,7 +32,7 @@ public class UsageFrequency {
     }
 
 
-    public static Map<Character, Integer> getLetters(){
+    public Map<Character, Integer> getLetters(){
         char[] chars = string.toCharArray();
         for (char ch : chars) {
             if (Character.isLetterOrDigit(ch)) {
@@ -46,7 +46,7 @@ public class UsageFrequency {
         return getLetters;
     }
 //\\\\W_]+   ( "[^\\w\\d\\s]"))   ( "[^a-zA-Z_0-9]"))
-    public static Map<String, Integer> getWords(){
+    public Map<String, Integer> getWords(){
         for (String word : string.split( "[^a-zA-Z_а-яА-Я_0-9]")) {
             word = word.trim();
             if (getWords.containsKey(word)) {
@@ -60,8 +60,9 @@ public class UsageFrequency {
     }
 
     public static void main(String[] args) {
-        processFile("E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\maps\\wiki.test.tokens");
-        for (var entry : getWords().entrySet()){
+        UsageFrequency usageFrequency = new UsageFrequency();
+        usageFrequency.processFile("E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\maps\\wiki.test.tokens");
+        for (var entry : usageFrequency.getWords().entrySet()){
             System.out.println(entry);
         }
 
