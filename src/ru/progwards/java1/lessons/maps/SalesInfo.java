@@ -63,16 +63,16 @@ public class SalesInfo {
         return result;
     }
 
-    public Map<String, AbstractMap.SimpleEntry<Double, Integer>> getCustomers(){
-        Map<String, AbstractMap.SimpleEntry<Double, Integer>> result =  new TreeMap<>();
-        for (int i = 0; i < arrayList.size(); i++){
+    public Map<String, AbstractMap.SimpleEntry<Double, Integer>> getCustomers() {
+        Map<String, AbstractMap.SimpleEntry<Double, Integer>> result = new TreeMap<>();
+        for (int i = 0; i < arrayList.size(); i++) {
             String[] s = arrayList.get(i);
-            if (result.containsKey(s[0])){
+            if (result.containsKey(s[0])) {
 
-                var simpleEntry = result.get(s[0]);
-                result.put(s[0], new AbstractMap.SimpleEntry<>(simpleEntry.getKey() + Double.parseDouble (s[3]), (simpleEntry.getValue() + Integer.parseInt(s[2]))));
+                AbstractMap.SimpleEntry simpleEntry = result.get(s[0]);
+                result.put(s[0], new AbstractMap.SimpleEntry<Double, Integer>((double) simpleEntry.getKey() + Double.parseDouble(s[3]), ((int) simpleEntry.getValue() + Integer.parseInt(s[2]))));
             }
-            result.putIfAbsent(s[0], new AbstractMap.SimpleEntry<>(Double.parseDouble(s[3]),Integer.parseInt(s[2])));
+            result.putIfAbsent(s[0], new AbstractMap.SimpleEntry<>(Double.parseDouble(s[3]), Integer.parseInt(s[2])));
         }
         return result;
     }
@@ -83,13 +83,13 @@ public class SalesInfo {
         System.out.println(salesInfo.loadOrders("E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\maps\\Test") + "\n");
 
 
-        for (var entry : salesInfo.getGoods().entrySet()) {
+        for ( Map.Entry<String, Double> entry : salesInfo.getGoods().entrySet()) {
             System.out.println(entry);
         }
         System.out.println();
 
 
-        for (var entry : salesInfo.getCustomers().entrySet()) {
+        for (Map.Entry<String, AbstractMap.SimpleEntry<Double, Integer>> entry : salesInfo.getCustomers().entrySet()) {
             System.out.println(entry);
         }
     }

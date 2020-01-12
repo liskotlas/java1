@@ -52,17 +52,17 @@ public class FiboMapCache {
         FiboMapCache fiboMapCacheOn = new FiboMapCache(true);
         FiboMapCache fiboMapCacheOff = new FiboMapCache(false);
         long cacheOff = System.currentTimeMillis();
-            for (int i = 1; i <= 1000; i++) {
-                fiboMapCacheOff.fiboNumber(i);
-            }
+        for (int i = 1; i <= 1000; i++) {
+            fiboMapCacheOff.fiboNumber(i);
+        }
         cacheOff = System.currentTimeMillis() - cacheOff;
 
         System.out.println(("fiboNumber cacheOn=false время выполнения " + cacheOff));
 
         long cacheOn = System.currentTimeMillis();
-            for (int i = 1; i <= 1000; i++) {
-                fiboMapCacheOn.fiboNumber(i);
-            }
+        for (int i = 1; i <= 1000; i++) {
+            fiboMapCacheOn.fiboNumber(i);
+        }
         cacheOn = System.currentTimeMillis() - cacheOn;
 
         System.out.println("fiboNumber cacheOn=true время выполнения " + cacheOn);
