@@ -14,7 +14,7 @@ public class CalculateFibonacci {
         }
     }
     public static int fiboNumber(int n) {
-        if (n == lastFibo.score){
+        if (lastFibo != null && n == lastFibo.score){
             return lastFibo.fibo;
         }
         int r = 1;
@@ -33,5 +33,9 @@ public class CalculateFibonacci {
             }
         return r;
     }
-    }
 
+
+    public static void main(String[] args) {
+        fiboNumber(10);
+    }
+}

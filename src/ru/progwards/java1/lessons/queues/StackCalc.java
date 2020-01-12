@@ -66,6 +66,7 @@ class Calculate {
         stackCalc.push(3.33);
         stackCalc.sub();
         stackCalc.mul(); // конец второг слагаемого
+
         stackCalc.push(737.22);
         stackCalc.push(24);
         stackCalc.add();
@@ -73,6 +74,7 @@ class Calculate {
         stackCalc.push(12.1);
         stackCalc.sub();
         stackCalc.div();
+        stackCalc.add();
         return (stackCalc.pop());
     }
 
