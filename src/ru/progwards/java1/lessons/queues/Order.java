@@ -28,6 +28,10 @@ public class Order  {
         return priority;
     }
 
+    public  int getNum(){
+        return 0;
+    }
+
     @Override
     public String toString() {
         return "Order{" +

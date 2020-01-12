@@ -32,12 +32,10 @@ public class StackCalc {
     }
 
     public void div() {
-        float a = (float) deque.pop().doubleValue();
-        float b = (float) deque.pop().doubleValue();
+        double a = deque.pop().doubleValue();
+        double b = deque.pop().doubleValue();
 
-//        deque.push((double) deque.pop() * (1 / (double) deque.pop()));
-
-        deque.push(Double.valueOf(b /a));
+        deque.push(b /a);
     }
 }
 
@@ -75,14 +73,19 @@ class Calculate {
         stackCalc.push(12.1);
         stackCalc.sub();
         stackCalc.div();
-        System.out.println(stackCalc.pop());
-        stackCalc.add();
-        return stackCalc.pop();
+        return (stackCalc.pop());
     }
 
     public static void main(String[] args) {
+
         StackCalc stackCalc = new StackCalc();
-        System.out.println(calculation1());
+//        stackCalc.push(1.0);
+//        stackCalc.push(5.0);
+//        stackCalc.push(9.0);
+//        stackCalc.div();
+//        System.out.println(stackCalc.pop());
+//        System.out.println(stackCalc.pop());
+//        System.out.println(calculation1());
         System.out.println(calculation2());
 
     }

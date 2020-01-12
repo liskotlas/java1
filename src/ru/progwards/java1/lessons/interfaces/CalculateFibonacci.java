@@ -11,7 +11,6 @@ public class CalculateFibonacci {
         CacheInfo (int fibo, int score){
             this.fibo = fibo;
             this.score = score;
-            ;
         }
     }
     public static int fiboNumber(int n) {
