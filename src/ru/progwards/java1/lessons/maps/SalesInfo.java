@@ -16,7 +16,7 @@ public class SalesInfo {
                     String string = scanner.nextLine();
                     String[] words = new String[4];
                     for (String word : string.split(",")) {
-                        if (i > 3) {
+                        if (word.trim() == "" || i > 3) {
                             i = 0;
                             break;
                         }

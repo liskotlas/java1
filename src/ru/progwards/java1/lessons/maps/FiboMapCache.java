@@ -32,10 +32,11 @@ public class FiboMapCache {
 
     public BigDecimal fiboNumber(int n) {
         if (cacheOn == true) {
-            BigDecimal res = fibo(n);
-            if (fiboCache != null && fiboCache.get(n) == res) {
+
+            if (fiboCache != null && fiboCache.containsKey(n)) {
                 return fiboCache.get(n);
             } else {
+                BigDecimal res = fibo(n);
                 fiboCache.put(n, res);
                 return res;
             }
@@ -52,7 +53,7 @@ public class FiboMapCache {
         FiboMapCache fiboMapCacheOn = new FiboMapCache(true);
         FiboMapCache fiboMapCacheOff = new FiboMapCache(false);
         long cacheOff = System.currentTimeMillis();
-        for (int i = 1; i <= 1000; i++) {
+        for (int i = 1; i <= 5000; i++) {
             fiboMapCacheOff.fiboNumber(i);
         }
         cacheOff = System.currentTimeMillis() - cacheOff;
@@ -60,7 +61,7 @@ public class FiboMapCache {
         System.out.println(("fiboNumber cacheOn=false время выполнения " + cacheOff));
 
         long cacheOn = System.currentTimeMillis();
-        for (int i = 1; i <= 1000; i++) {
+        for (int i = 1; i <= 5000; i++) {
             fiboMapCacheOn.fiboNumber(i);
         }
         cacheOn = System.currentTimeMillis() - cacheOn;
