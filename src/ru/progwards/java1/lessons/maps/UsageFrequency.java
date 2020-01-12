@@ -59,17 +59,17 @@ public class UsageFrequency {
         return getWords;
     }
 
-    public static void main(String[] args) {
-        UsageFrequency usageFrequency = new UsageFrequency();
-        usageFrequency.processFile("E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\maps\\wiki.test.tokens");
-        for (var entry : usageFrequency.getWords().entrySet()){
-            System.out.println(entry);
-        }
-
-//        System.out.println(Integer.parseInt("fgh2"));
-
-//        System.out.println(getLetters().size());
-    }
+//    public static void main(String[] args) {
+//        UsageFrequency usageFrequency = new UsageFrequency();
+//        usageFrequency.processFile("E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\maps\\wiki.test.tokens");
+//        for (var entry : usageFrequency.getWords().entrySet()){
+//            System.out.println(entry);
+//        }
+//
+////        System.out.println(Integer.parseInt("fgh2"));
+//
+////        System.out.println(getLetters().size());
+//    }
 
 }
 
