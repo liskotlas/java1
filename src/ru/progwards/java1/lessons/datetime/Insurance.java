@@ -1,5 +1,6 @@
 package ru.progwards.java1.lessons.datetime;
 
+import javax.xml.crypto.Data;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
@@ -43,7 +44,7 @@ public class Insurance {
     }
 
     public void setDuration(int months, int days, int hours){
-        duration = Duration.from(Period.ofMonths(months)).plusDays(days).plusHours(hours);
+        duration = Duration.between(LocalDateTime.now(), LocalDateTime.now().plusMonths(months).plusDays(days).plusHours(hours));
     }
 
     public void setDuration(String strDuration, FormatStyle style){
@@ -64,4 +65,18 @@ public class Insurance {
         }
         return false;
     }
+
+    public String toString(){
+        if (checkValid(ZonedDateTime.now(ZoneId.systemDefault())) == true){
+            return "Insurance issued on " + start +  " is valid";
+        }
+        return "Insurance issued on " + start +  " is not valid";
+    }
+
+    public static void main(String[] args) {
+        Insurance insurance = new Insurance(ZonedDateTime.now(ZoneId.systemDefault()));
+        insurance.setDuration(1,9,0);
+        System.out.println(insurance.checkValid(ZonedDateTime.now(ZoneId.systemDefault()).plusDays(35)));
+    }
 }
+
