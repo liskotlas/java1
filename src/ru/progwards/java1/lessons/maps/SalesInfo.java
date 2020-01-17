@@ -88,7 +88,6 @@ public class SalesInfo {
         }
         System.out.println();
 
-
         for (Map.Entry<String, AbstractMap.SimpleEntry<Double, Integer>> entry : salesInfo.getCustomers().entrySet()) {
             System.out.println(entry);
         }

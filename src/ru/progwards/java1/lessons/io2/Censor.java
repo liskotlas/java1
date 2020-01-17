@@ -13,7 +13,7 @@ public class Censor {
 
         try (FileReader fileReader = new FileReader(inoutFileName)) {
             Scanner scanner = new Scanner(fileReader);
-            try {
+//            try {
                 while (scanner.hasNextLine()) {                     //разбитие на строки
                     String string = scanner.nextLine();
                     for (String word : string.split(" ")) {  //разбитие строки на слова
@@ -40,9 +40,9 @@ public class Censor {
                     }
                     stringOut = stringOut.trim();       //формируем строку вывода
                 }
-            }catch (Exception e){
-                throw new CensorException(e.getMessage(), inoutFileName);
-            }
+//            }catch (Exception e){
+//                throw new CensorException(e.getMessage(), inoutFileName);
+//            }
             try (FileWriter fileWriter = new FileWriter(inoutFileName)) {
                 fileWriter.write(stringOut);
             } catch (Exception e) {
@@ -58,8 +58,8 @@ public class Censor {
     }
 
     public static void main(String[] args) {
-        String[] obscene = new String[]{"two", "storey", "day", "write", "house"};
-//        String[] obscene = null;
+//        String[] obscene = new String[]{"two", "storey", "day", "write", "house"};
+        String[] obscene = null;
         try {
             censorFile("E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\io2\\Censor", obscene);
         }catch (CensorException e){
