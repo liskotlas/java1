@@ -1,6 +1,5 @@
 package ru.progwards.java1.lessons.datetime;
 
-import javax.xml.crypto.Data;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
@@ -26,12 +25,15 @@ public class Insurance {
             case SHORT:
                 DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
                 start = LocalDateTime.parse(strStart, formatter).atZone(ZoneId.systemDefault());
+                break;
             case LONG:
                 DateTimeFormatter formatter1 = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
                 start = LocalDateTime.parse(strStart, formatter1).atZone(ZoneId.systemDefault());
+                break;
             case FULL:
                 DateTimeFormatter formatter2 = DateTimeFormatter.ISO_ZONED_DATE_TIME;
                 start = ZonedDateTime.parse(strStart, formatter2);
+                break;
         }
     }
 
@@ -43,27 +45,42 @@ public class Insurance {
         duration = Duration.between(expiration, start);
     }
 
-    public void setDuration(int months, int days, int hours){
-        duration = Duration.between(LocalDateTime.now(), LocalDateTime.now().plusMonths(months).plusDays(days).plusHours(hours));
+//    public void setDuration(int months, int days, int hours){
+//        duration = Duration.between(LocalDateTime.now(), LocalDateTime.now().plusMonths(months).plusDays(days).plusHours(hours));
+//    }
+
+    public void setDuration(int mons, int days, int hrs) {
+        ZonedDateTime ldt = start == null ? ZonedDateTime.now() : start;
+        ldt = ldt.plusMonths(mons).plusDays(days).plusHours(hrs);
+        duration = Duration.between(start, ldt);
     }
 
     public void setDuration(String strDuration, FormatStyle style){
         switch (style){
             case SHORT:
-                duration = Duration.ofMillis(Long.valueOf(strDuration));
+                duration = Duration.ofMillis(Integer.parseInt(strDuration));
+                break;
             case LONG:
-                LocalDateTime time = LocalDateTime.parse(strDuration, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-                duration = Duration.parse(time.toString());
+                LocalDateTime time = LocalDateTime.parse("0000-00-00T00:00:00", DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+                duration = Duration.between(time, LocalDateTime.parse(strDuration, DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+                break;
             case FULL:
                 duration = Duration.parse(strDuration);
         }
     }
 
-    public boolean checkValid(ZonedDateTime dateTime){
-        if (dateTime.compareTo(start) >=0 && dateTime.compareTo(start.plusSeconds(duration.getSeconds())) <=0){
-            return true;
-        }
-        return false;
+//    public boolean checkValid(ZonedDateTime dateTime){
+//
+//        if (dateTime.isAfter(start)&& dateTime.isBefore(start.plusSeconds(duration.toSeconds()))){
+//            return true;
+//        }
+//        return false;
+//    }
+
+    public boolean checkValid(ZonedDateTime dateTime) {
+        if (duration == null) return dateTime.isAfter(start);
+        ZonedDateTime end = start.plusHours(duration.toHours());
+        return dateTime.isAfter(start) && dateTime.isBefore(end);
     }
 
     public String toString(){
