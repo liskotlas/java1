@@ -45,15 +45,15 @@ public class Insurance {
         duration = Duration.between(expiration, start);
     }
 
-//    public void setDuration(int months, int days, int hours){
-//        duration = Duration.between(LocalDateTime.now(), LocalDateTime.now().plusMonths(months).plusDays(days).plusHours(hours));
-//    }
-
-    public void setDuration(int mons, int days, int hrs) {
-        ZonedDateTime ldt = start == null ? ZonedDateTime.now() : start;
-        ldt = ldt.plusMonths(mons).plusDays(days).plusHours(hrs);
-        duration = Duration.between(start, ldt);
+    public void setDuration(int months, int days, int hours){
+        duration = Duration.between(LocalDateTime.now(), LocalDateTime.now().plusMonths(months).plusDays(days).plusHours(hours));
     }
+
+//    public void setDuration(int mons, int days, int hrs) {
+//        ZonedDateTime ldt = start == null ? ZonedDateTime.now() : start;
+//        ldt = ldt.plusMonths(mons).plusDays(days).plusHours(hrs);
+//        duration = Duration.between(start, ldt);
+//    }
 
     public void setDuration(String strDuration, FormatStyle style){
         switch (style){
@@ -61,7 +61,7 @@ public class Insurance {
                 duration = Duration.ofMillis(Integer.parseInt(strDuration));
                 break;
             case LONG:
-                LocalDateTime time = LocalDateTime.parse("0000-00-00T00:00:00", DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+                LocalDateTime time = LocalDateTime.parse("0000-01-01T00:00:00", DateTimeFormatter.ISO_LOCAL_DATE_TIME);
                 duration = Duration.between(time, LocalDateTime.parse(strDuration, DateTimeFormatter.ISO_LOCAL_DATE_TIME));
                 break;
             case FULL:
@@ -90,10 +90,20 @@ public class Insurance {
         return "Insurance issued on " + start +  " is not valid";
     }
 
+//    public static void main(String[] args) {
+//        Insurance insurance = new Insurance(ZonedDateTime.now(ZoneId.systemDefault()));
+//        insurance.setDuration(1,9,0);
+//        System.out.println(insurance.checkValid(ZonedDateTime.now(ZoneId.systemDefault()).plusDays(35)));
+//    }
+
     public static void main(String[] args) {
-        Insurance insurance = new Insurance(ZonedDateTime.now(ZoneId.systemDefault()));
-        insurance.setDuration(1,9,0);
-        System.out.println(insurance.checkValid(ZonedDateTime.now(ZoneId.systemDefault()).plusDays(35)));
+        LocalDateTime date0 = LocalDateTime.parse("0000-01-01T00:00:00", DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+        LocalDateTime date1 = LocalDateTime.parse("0000-06-03T10:00:00", DateTimeFormatter.ISO_LOCAL_DATE_TIME).plusMonths(1).plusDays(1);
+        Duration duration = Duration.between(date0, date1);
+        System.out.println(date0);
+        System.out.println(date1);
+        System.out.println(duration);
     }
 }
+
 
