@@ -49,8 +49,9 @@ public class FindDuplicates {
     // сравнение файлов по атрибутам и содержимому
     private boolean fullFiltr(Path file1, Path file2){
         try {
-            if (Files.getAttribute(file1, "lastModifiedTime") == Files.getAttribute(file2, "lastModifiedTime") && Files.getAttribute(file1, "size") == Files.getAttribute(file2, "size")) {
+            if (Files.getAttribute(file1, "lastModifiedTime").equals(Files.getAttribute(file2, "lastModifiedTime")) && Files.getAttribute(file1, "size").equals(Files.getAttribute(file2, "size"))) {
                 if (Arrays.equals(Files.readAllBytes(file1), Files.readAllBytes(file2))) {
+                    System.out.println("Сошлись)");
                     return true;
                 }
             }
@@ -78,7 +79,7 @@ public class FindDuplicates {
 
     public static void main(String[] args){
         FindDuplicates findDuplicates = new FindDuplicates();
-        for (var pass : findDuplicates.findDuplicates("e:/Java/Education/src/ru/progwards/java1/lessons")) {
+        for (var pass : findDuplicates.findDuplicates("e:/Dir")) {
             for (String s : pass) {
                 System.out.println(s);
             }
