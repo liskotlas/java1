@@ -15,13 +15,15 @@ public class FindDuplicates {
     private Map<Path, ArrayList<Path>> fileList(String start){
         Map<Path, ArrayList<Path>> fileList = new HashMap<>();
         Path pathFile = Paths.get(start);
-        PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:**/*");
+        PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:**");
         try {
             Files.walkFileTree(pathFile, new SimpleFileVisitor<Path>() {
 
                 @Override
                 public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) throws IOException {
-                    if (pathMatcher.matches(pathFile.relativize(path))) {
+//                    if (pathMatcher.matches(pathFile.relativize(path))) {
+                    if (pathMatcher.matches(path)) {
+                        System.out.println(path);
                         if (fileList.containsKey(path.getFileName()) && fullFiltr(fileList.get(path.getFileName()).get(0), path)) {
                             fileList.get(path.getFileName()).add(path);
                             return FileVisitResult.CONTINUE;
@@ -65,7 +67,9 @@ public class FindDuplicates {
     public List<List<String>> findDuplicates(String startPath){
         List<List<String>> result = new ArrayList<>();
         for (var entry : fileList(startPath).entrySet()) {
-            if (entry.getValue().size() > 0) {
+            System.out.println((entry.getValue()));
+
+            if (entry.getValue().size() > 1) {
                 List<String> stringPath = new ArrayList<>();
                 for (Path path : entry.getValue()) {
                     stringPath.add(path.toString());
