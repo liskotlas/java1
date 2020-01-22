@@ -24,7 +24,10 @@ public class Insurance {
         switch (style){
             case SHORT:
                 DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
-                start = LocalDateTime.parse(strStart, formatter).atZone(ZoneId.systemDefault());
+                LocalDate start2 = LocalDate.parse(strStart, formatter);
+                LocalTime time = LocalTime.of(0,0);
+                LocalDateTime dateTime = LocalDateTime.of(start2, time);
+
                 break;
             case LONG:
                 DateTimeFormatter formatter1 = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
