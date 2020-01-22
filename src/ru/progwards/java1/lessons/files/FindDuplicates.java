@@ -51,7 +51,7 @@ public class FindDuplicates {
         try {
             if (Files.getAttribute(file1, "lastModifiedTime").equals(Files.getAttribute(file2, "lastModifiedTime")) && Files.getAttribute(file1, "size").equals(Files.getAttribute(file2, "size"))) {
                 if (Arrays.equals(Files.readAllBytes(file1), Files.readAllBytes(file2))) {
-                    System.out.println("Сошлись)");
+//                    System.out.println("Сошлись)");
                     return true;
                 }
             }
@@ -81,8 +81,9 @@ public class FindDuplicates {
         FindDuplicates findDuplicates = new FindDuplicates();
         for (var pass : findDuplicates.findDuplicates("e:/Dir")) {
             for (String s : pass) {
-                System.out.println(s);
+                System.out.print(s + ",  ");
             }
+            System.out.println("\n");
 //            System.out.println(entry.getValue().getClass());
 
         }
