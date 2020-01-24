@@ -12,10 +12,10 @@ import java.util.*;
 public class FindDuplicates {
 
     //    Создание Map с именами файлов по результатам сравнения файлов
-    private Map<Path, ArrayList<Path>> fileList(String start){
-        Map<Path, ArrayList<Path>> fileList = new HashMap<>();
+    private List<Path> fileList(String start){
+        List<Path> fileList = new ArrayList<>();
         Path pathFile = Paths.get(start);
-        PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:**");
+        PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:**/**");
         try {
             Files.walkFileTree(pathFile, new SimpleFileVisitor<Path>() {
 
@@ -23,15 +23,8 @@ public class FindDuplicates {
                 public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) throws IOException {
 //                    if (pathMatcher.matches(pathFile.relativize(path))) {
                     if (pathMatcher.matches(path)) {
-                        System.out.println(path);
-                        if (fileList.containsKey(path.getFileName()) && fullFiltr(fileList.get(path.getFileName()).get(0), path)) {
-                            fileList.get(path.getFileName()).add(path);
+                        fileList.add(path);
                             return FileVisitResult.CONTINUE;
-                        }
-                        ArrayList<Path> tmpPath = new ArrayList<>();
-                        tmpPath.add(path);
-                        fileList.putIfAbsent(path.getFileName(), tmpPath);
-                        return FileVisitResult.CONTINUE;
                     }
                     return FileVisitResult.CONTINUE;
                 }
@@ -66,16 +59,20 @@ public class FindDuplicates {
     //    обработка Map и вывод результата
     public List<List<String>> findDuplicates(String startPath){
         List<List<String>> result = new ArrayList<>();
-        for (var entry : fileList(startPath).entrySet()) {
-            System.out.println((entry.getValue()));
+        List<Path> tmpFileList = fileList(startPath);
 
-            if (entry.getValue().size() > 1) {
-                List<String> stringPath = new ArrayList<>();
-                for (Path path : entry.getValue()) {
-                    stringPath.add(path.toString());
+        for (int i = 0; i < tmpFileList.size(); i++) {
+            Path file1 = tmpFileList.get(i);
+            List<String> filePathList = new ArrayList<>();
+            for (int f = i+1; f < tmpFileList.size(); f++) {
+                Path file2 = tmpFileList.get(f);
+                if (file1.getFileName().compareTo(file2.getFileName()) == 0 && fullFiltr(file1, file2)) {
+                        filePathList.add(file1.toString());
+                        filePathList.add(file2.toString());
+                        tmpFileList.remove(f);
                 }
-                result.add(stringPath);
             }
+            result.add(filePathList);
         }
         return result;
     }
@@ -84,12 +81,11 @@ public class FindDuplicates {
     public static void main(String[] args){
         FindDuplicates findDuplicates = new FindDuplicates();
         for (var pass : findDuplicates.findDuplicates("e:/Dir")) {
+
             for (String s : pass) {
                 System.out.print(s + ",  ");
             }
             System.out.println("\n");
-//            System.out.println(entry.getValue().getClass());
-
         }
     }
 
