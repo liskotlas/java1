@@ -15,7 +15,7 @@ public class FindDuplicates {
     private List<Path> fileList(String start){
         List<Path> fileList = new ArrayList<>();
         Path pathFile = Paths.get(start);
-        PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:**/**");
+        PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:**/*");
         try {
             Files.walkFileTree(pathFile, new SimpleFileVisitor<Path>() {
 
@@ -72,7 +72,9 @@ public class FindDuplicates {
                         tmpFileList.remove(f);
                 }
             }
-            result.add(filePathList);
+            if (filePathList.size() !=0){
+                result.add(filePathList);
+            }
         }
         return result;
     }
@@ -88,5 +90,4 @@ public class FindDuplicates {
             System.out.println("\n");
         }
     }
-
 }
