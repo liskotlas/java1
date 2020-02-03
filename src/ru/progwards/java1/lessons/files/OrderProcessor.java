@@ -130,51 +130,6 @@ public class OrderProcessor {
         return ordersFiltr;
     }
 
-    class Order {
-
-        public String shopId = "";
-        //        - идентификатор магазина
-        public String orderId = "";
-        //        - идентификатор заказа
-        public String customerId = "";
-        //        - идентификатор покупателя
-        public LocalDateTime datetime;
-        //        - дата-время заказа (из атрибутов файла - дата последнего изменения)
-        public List<OrderItem> items;
-        //        - список позиций в заказе, отсортированный по наименованию товара
-        public double sum = 0;
-//        - сумма стоимости всех позиций в заказе
-
-        public Order(Path fileOrder, List<OrderItem> orderItemList) throws IOException {
-
-            this.shopId = fileOrder.getFileName().toString().substring(0, 3);
-            this.orderId = fileOrder.getFileName().toString().substring(5, 10);
-            this.customerId = fileOrder.getFileName().toString().substring(12, 16);
-            this.datetime = fileDate;
-            this.items = orderItemList;
-            for (OrderItem item : items) {
-                this.sum += item.count * item.price;
-            }
-        }
-    }
-
-    class OrderItem {
-
-        public String googsName = "";
-//        - наименование товара
-
-        public int count = 0;
-//        - количество
-
-        public double price = 0;
-//        - цена за единицу
-
-        public OrderItem(String[] positionGood) {
-            this.googsName = positionGood[0].trim();
-            this.count = Integer.parseInt(positionGood[1].trim());
-            this.price = Integer.parseInt(positionGood[2].trim());
-        }
-    }
 
     public List<Order> process(String shopId) {
         List<Order> ordersFiltr = new ArrayList<>();
