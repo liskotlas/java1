@@ -12,7 +12,7 @@ import java.util.*;
 // ZZZZ - обязательные 4 символа customerId - идентификатор покупателя, расширение файла - csv, например S02-P01X12-0012.csv: shopId=”S02”, orderId=”P01X12”, customerId=”0012”
 public class OrderProcessor {
     public String startPath;
-    List<OrderItem> orderItemList = new ArrayList<>();
+    List<OrderItem> orderItemList;
     List<Order> orderList = new ArrayList<>();
     public int failedFile = 0;
     LocalDateTime fileDate;
@@ -79,15 +79,14 @@ public class OrderProcessor {
     private List<Order> OrderList(LocalDate start, LocalDate finish, String shopId, Path pathOrderFile) throws IOException {
 //        orderList.clear();
         if (checkOrderDate(start, finish, shopId, pathOrderFile)) {
+            orderItemList = new ArrayList<>();
             List<String> good = new ArrayList<>(sortGoods(Files.readAllLines(pathOrderFile)));
             for (String s : good) {
                 String[] positionGood = s.split(",");
                 orderItemList.add(new OrderItem(positionGood));
             }
-            good.clear();
 
             orderList.add(new Order(pathOrderFile, orderItemList));
-//            orderItemList.clear();
         }
         return orderList;
     }
@@ -97,11 +96,15 @@ public class OrderProcessor {
         ArrayList<String> goodsArrayList = new ArrayList<>(goodsList);
 
         String tmp;
+        String tmp2;
         for (int f = 0; f < goodsArrayList.size(); f++) {
             for (int i = f + 1; i < goodsArrayList.size(); i++) {
-                if (goodsArrayList.get(f).equals(goodsArrayList.get(i))) {
+                if (goodsArrayList.get(f).compareTo(goodsArrayList.get(i)) > 0) {
                     tmp = goodsArrayList.get(f);
-                    goodsArrayList.add(f, goodsArrayList.get(i));
+                    tmp2 = goodsArrayList.get(i);
+                    goodsArrayList.remove(f);
+                    goodsArrayList.add(f, tmp2);
+                    goodsArrayList.remove(i);
                     goodsArrayList.add(i, tmp);
                 }
             }
@@ -246,10 +249,10 @@ public class OrderProcessor {
                 System.out.println(item.googsName+ " " + item.price+ " " + item.count);
             }
         }
-//        Map map = processor.statisticsByGoods();
-//        for (var entry : map.entrySet()) {
-//            System.out.println(entry.toString());
-//        }
+        Map map = processor.statisticsByGoods();
+        for (var entry : map.entrySet()) {
+            System.out.println(entry.toString());
+        }
 
     }
 }
