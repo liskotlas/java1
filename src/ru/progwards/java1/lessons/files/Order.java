@@ -21,6 +21,9 @@ public class Order {
     public double sum = 0;
 //        - сумма стоимости всех позиций в заказе
 
+    public Order(){
+    }
+
     public Order(Path fileOrder, List<OrderItem> orderItemList) throws IOException {
 
         this.shopId = fileOrder.getFileName().toString().substring(0, 3);

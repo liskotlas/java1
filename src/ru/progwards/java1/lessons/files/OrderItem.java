@@ -11,6 +11,9 @@ public class OrderItem {
     public double price = 0;
 //        - цена за единицу
 
+    public OrderItem(){
+    }
+
     public OrderItem(String[] positionGood) {
         this.googsName = positionGood[0].trim();
         this.count = Integer.parseInt(positionGood[1].trim());
