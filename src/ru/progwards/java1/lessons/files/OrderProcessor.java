@@ -47,7 +47,7 @@ public class OrderProcessor {
 
     // Проверка входящих файлов
     private boolean checkOrderDate(LocalDate start, LocalDate finish, String shopId, Path path) throws IOException {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
         fileDate = LocalDateTime.from(formatter.parse(Files.getAttribute(path, "lastModifiedTime").toString()));
         String s = "glob:**/???-??????-????.csv";
         if (shopId != null) {
