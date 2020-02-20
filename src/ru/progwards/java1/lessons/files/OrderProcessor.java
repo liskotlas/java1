@@ -15,7 +15,7 @@ public class OrderProcessor {
     List<OrderItem> orderItemList;
     List<Order> orderList = new ArrayList<>();
     public int failedFile = 0;
-    LocalDateTime fileDate;
+    Instant fileDate;
 
     public OrderProcessor(String startPath) {
         this.startPath = startPath;
@@ -47,8 +47,9 @@ public class OrderProcessor {
 
     // Проверка входящих файлов
     private boolean checkOrderDate(LocalDate start, LocalDate finish, String shopId, Path path) throws IOException {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
-        fileDate = LocalDateTime.from(formatter.parse(Files.getAttribute(path, "lastModifiedTime").toString()));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'");
+//        fileDate = LocalDateTime.from(formatter.parse(Files.getAttribute(path, "lastModifiedTime").toString()));
+        fileDate = Instant.parse(Files.getAttribute(path, "lastModifiedTime").toString());
         String s = "glob:**/???-??????-????.csv";
         if (shopId != null) {
             s = "glob:**/" + shopId + "-??????-????.csv";
@@ -58,15 +59,19 @@ public class OrderProcessor {
 
         if (pathMatcher.matches(path)) {
 
-            if (start == null && fileDate.isBefore(LocalDateTime.of(finish, LocalTime.of(23, 53, 59)))) {
+            if(start == null && fileDate.isBefore(Instant.from(ZonedDateTime.of(finish, LocalTime.of(23, 59, 59, 000000), ZoneId.systemDefault())))){
+
+//            if (start == null && fileDate.isBefore(LocalDateTime.of(finish, LocalTime.of(23, 53, 59)))) {
                 return true;
             }
 
-            if (finish == null && fileDate.isAfter(LocalDateTime.of(start, LocalTime.of(0, 0, 0)))) {
+//            if (finish == null && fileDate.isAfter(LocalDateTime.of(start, LocalTime.of(0, 0, 0)))) {
+        if(finish == null && fileDate.isAfter(Instant.from(ZonedDateTime.of(start, LocalTime.of(0, 0, 0, 000000), ZoneId.systemDefault())))){
                 return true;
             }
 
-            if (fileDate.isAfter(LocalDateTime.of(start, LocalTime.of(0, 0, 0))) && fileDate.isBefore(LocalDateTime.of(finish, LocalTime.of(23, 53, 59)))) {
+//            if (fileDate.isAfter(LocalDateTime.of(start, LocalTime.of(0, 0, 0))) && fileDate.isBefore(LocalDateTime.of(finish, LocalTime.of(23, 53, 59)))) {
+            if(fileDate.isAfter(Instant.from(ZonedDateTime.of(start, LocalTime.of(0, 0, 0, 000000), ZoneId.systemDefault()))) && fileDate.isBefore(Instant.from(ZonedDateTime.of(finish, LocalTime.of(23, 59, 59, 000000), ZoneId.systemDefault())))){
                 return true;
             }
         }
