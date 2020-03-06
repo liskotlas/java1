@@ -72,6 +72,8 @@ public class Java2_2 {
 
         static void hanoi(int n, int from, int to, int additional){
 
+
+
             if (n == 0) return;
 
             hanoi(n-1,from,additional,to);
@@ -84,6 +86,8 @@ public class Java2_2 {
 
 
 
+
+
         public static void main(String[] args)
 
         {
@@ -92,7 +96,7 @@ public class Java2_2 {
 
 //            int n = con.nextInt();
 
-            hanoi(3,1,2,3);
+            hanoi(3,3,2,3);
 
         }
 
