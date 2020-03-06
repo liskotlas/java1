@@ -46,52 +46,52 @@ public class HanoiTower {
         }
     }
 
-        @Override
-        public String toString(){
+    @Override
+    public String toString() {
 
-            String result = "";
-            for(int i = 0; i < this.size; i++) {
-                result += zero[i] + " " + one[i] + " " + two[i] + "\n";
-            }
-            result += "=================\n";
-            return result;
+        String result = "";
+        for (int i = 0; i < this.size; i++) {
+            result += zero[i] + " " + one[i] + " " + two[i] + "\n";
         }
+        result += "=================\n";
+        return result;
+    }
 
 
     //переносит башню со штыря from на штырь to
-    public void move(int from, int to){
-        int additional = Integer.parseInt("012".replaceAll("" + from,"").replaceAll("" + to, ""));
+    public void move(int from, int to) {
+        int additional = Integer.parseInt("012".replaceAll("" + from, "").replaceAll("" + to, ""));
         hanoi(size, from, to, additional);
     }
 
-    void hanoi(int n, int from, int to, int additional){
+    void hanoi(int n, int from, int to, int additional) {
 
-        if(n == 0){
+        if (n == 0) {
             return;
         }
-        hanoi(n-1,from,additional,to);
+        hanoi(n - 1, from, additional, to);
 //        System.out.println(from + " " + to);
         replace(from, to);
         if (on == true) {
             print();
         }
-        hanoi(n-1,additional,to,from);
+        hanoi(n - 1, additional, to, from);
     }
 
-    void replace (int from, int to){
+    void replace(int from, int to) {
         String tmp = "";
-        String [] tmpArr;
+        String[] tmpArr;
 
-        switch (from){
+        switch (from) {
             case 0:
                 for (int i = 0; i < zero.length; i++) {
-                if (zero[i] == empty) {
-                    continue;
+                    if (zero[i] == empty) {
+                        continue;
+                    }
+                    tmp = zero[i];
+                    zero[i] = empty;
+                    break;
                 }
-                tmp = zero[i];
-                zero[i] = empty;
-                break;
-            }
                 break;
 
             case 1:
@@ -117,11 +117,11 @@ public class HanoiTower {
                 break;
         }
 
-        switch (to){
+        switch (to) {
             case 0:
 
-                for (int i = (zero.length - 1); i >= 0; i--){
-                    if (zero[i] != empty){
+                for (int i = (zero.length - 1); i >= 0; i--) {
+                    if (zero[i] != empty) {
                         continue;
                     }
                     zero[i] = tmp;
@@ -130,18 +130,18 @@ public class HanoiTower {
                 break;
 
             case 1:
-                for (int i = one.length - 1; i >= 0; i--){
-                        if (one[i] != empty){
-                            continue;
-                        }
-                        one[i] = tmp;
-                        break;
+                for (int i = one.length - 1; i >= 0; i--) {
+                    if (one[i] != empty) {
+                        continue;
+                    }
+                    one[i] = tmp;
+                    break;
                 }
                 break;
 
             case 2:
-                for (int i = two.length - 1; i >= 0; i--){
-                    if (two[i] != empty){
+                for (int i = two.length - 1; i >= 0; i--) {
+                    if (two[i] != empty) {
                         continue;
                     }
                     two[i] = tmp;
@@ -156,24 +156,24 @@ public class HanoiTower {
     }
 
     // выводит текущее состояние башни на консоль
-    void print(){
+    void print() {
         System.out.println(this.toString());
-        }
+    }
 
     //включает отладочную печать состояния игрового поля после каждого шага алгоритма (метода move). В результате все промежуточные ходы должны быть отображены
-    void setTrace(boolean on){
+    void setTrace(boolean on) {
         this.on = on;
     }
 
     public static void main(String[] args) {
-        HanoiTower test = new HanoiTower(3,2);
+        HanoiTower test = new HanoiTower(3, 2);
         test.setTrace(true);
         test.print();
-        test.move(2,1);
+        test.move(2, 1);
         test.print();
         test.setTrace(false);
         test.print();
-        test.move(1,0);
+        test.move(1, 0);
         test.print();
 
     }
