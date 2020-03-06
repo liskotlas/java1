@@ -53,7 +53,7 @@ public class HanoiTower {
             for(int i = 0; i < this.size; i++) {
                 result += zero[i] + " " + one[i] + " " + two[i] + "\n";
             }
-            result += "=================";
+            result += "=================\n";
             return result;
         }
 
