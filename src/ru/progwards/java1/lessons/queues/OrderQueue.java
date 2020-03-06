@@ -6,14 +6,24 @@ import java.util.PriorityQueue;
 
 class OrderQueue {
 
-    Comparator<Order> comparator = new Comparator<Order>() {
+
+    Comparator<Order> comparatorPriority = new Comparator<Order>() {
         @Override
         public int compare(Order o1, Order o2) {
             return Integer.compare(o1.getPriority(), o2.getPriority());
+
         }
     };
 
-    PriorityQueue<Order> priorityQueue = new PriorityQueue(comparator);
+    Comparator<Order> comparatorNum = new Comparator<Order>() {
+        @Override
+        public int compare(Order o1, Order o2) {
+            return Integer.compare(o1.getNum(), o2.getNum());
+        }
+    };
+
+//    PriorityQueue<Order> priorityQueue = new PriorityQueue(comparator);
+PriorityQueue<Order> priorityQueue = new PriorityQueue(comparatorPriority.thenComparing(comparatorNum));
 
     public void add(Order order) {
         priorityQueue.offer(order);

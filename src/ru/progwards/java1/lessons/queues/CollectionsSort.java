@@ -39,7 +39,7 @@ public class CollectionsSort {
 
     public static Collection<String> compareSort() {
 
-        ArrayList<String> result = new ArrayList<>();
+//        ArrayList<String> result = new ArrayList<>();
 //        ArrayList<Sorted> resultSorted = new ArrayList<>();
         TreeSet<Sorted> resultSorted = new TreeSet<>();
 
@@ -66,10 +66,7 @@ public class CollectionsSort {
         System.out.println("MinTime = " + timeMin);
         System.out.println("CollTime = " + timeSort);
 
-        for(Sorted s : resultSorted){
-            System.out.println(s.name + "   -   " + s.time);
-            result.add(s.name);
-        }
+            ArrayList<String> result = new ArrayList(resultSorted);
 //        if (timeMin < timeMy && timeMin < timeSort && timeMy < timeSort) {
 //            result.add("minSort");
 //            result.add("mySort");
@@ -114,15 +111,10 @@ public class CollectionsSort {
 
         @Override
         public int compareTo(Sorted o) {
-            if(this.time < o.time) {
-                return -1;
-            }
-            if(this.time > o.time){
-                return 1;
-            }else{
+            if(this.time == o.time){
                 return this.name.compareTo(o.name);
-            }
-
+            }else
+            return Long.compare(this.time, o.time);
         }
     }
 
