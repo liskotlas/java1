@@ -4,6 +4,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GoodsWithLambda {
 
@@ -55,20 +56,20 @@ public class GoodsWithLambda {
     //- вернуть список, с товаром, который будет просрочен после указанной даты, отсортированный по дате годности
     List<Goods> expiredAfter(Instant date){
         this.goodsList.sort(Comparator.comparing(x -> date.isBefore(x.expired)));
-        return null;
+        return goodsList;
     }
 
     // - вернуть список, с товаром, количество на складе которого меньше указанного
     List<Goods> сountLess(int count){
         this.goodsList.sort(Comparator.comparing(x -> count > x.available));
-        return this.goodsList;
+        return goodsList.stream().takeWhile(x -> count > x.available).collect(Collectors.toList());
     }
 
     // - вернуть список, с товаром, количество на складе которого больше count1 и меньше count2
     List<Goods> сountBetween(int count1, int count2){
 
         goodsList.sort(Comparator.comparing(x -> count1 < x.available && count2 > x.available));
-        return this.goodsList;
+        return this.goodsList.stream().takeWhile(x -> count1 < x.available && count2 > x.available).collect(Collectors.toList());
     }
 
 

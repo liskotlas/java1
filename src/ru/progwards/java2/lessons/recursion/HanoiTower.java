@@ -70,8 +70,8 @@ public class HanoiTower {
             return;
         }
         hanoi(n - 1, from, additional, to);
-//        System.out.println(from + " " + to);
-        replace(from, to);
+        System.out.println(from + " " + to);
+//        replace(from, to);
         if (on == true) {
             print();
         }
@@ -167,14 +167,9 @@ public class HanoiTower {
 
     public static void main(String[] args) {
         HanoiTower test = new HanoiTower(3, 2);
-        test.setTrace(true);
+        test.setTrace(false);
         test.print();
         test.move(2, 1);
         test.print();
-        test.setTrace(false);
-        test.print();
-        test.move(1, 0);
-        test.print();
-
     }
 }
