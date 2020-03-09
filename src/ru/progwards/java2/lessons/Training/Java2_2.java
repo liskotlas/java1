@@ -88,15 +88,15 @@ public class Java2_2 {
 
 
 
-        public static void main(String[] args)
-
-        {
+        public static void main(String[] args){
 
 //            Scanner con = new Scanner(System.in);
 
 //            int n = con.nextInt();
 
-            hanoi(3,3,2,3);
+//            hanoi(3,3,2,3);
+            System.out.println(sumSequence(1));
+
 
         }
 

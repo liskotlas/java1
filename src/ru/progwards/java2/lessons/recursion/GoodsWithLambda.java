@@ -55,21 +55,23 @@ public class GoodsWithLambda {
 
     //- вернуть список, с товаром, который будет просрочен после указанной даты, отсортированный по дате годности
     List<Goods> expiredAfter(Instant date){
-        this.goodsList.sort(Comparator.comparing(x -> date.isBefore(x.expired)));
-        return goodsList;
+//        this.goodsList.sort(Comparator.comparing(x -> date.isBefore(x.expired)));
+        return goodsList.stream().filter(x -> date.isBefore(x.expired)).collect(Collectors.toList());
     }
 
     // - вернуть список, с товаром, количество на складе которого меньше указанного
     List<Goods> сountLess(int count){
-        this.goodsList.sort(Comparator.comparing(x -> count > x.available));
-        return goodsList.stream().takeWhile(x -> count > x.available).collect(Collectors.toList());
+//        this.goodsList.sort(Comparator.comparing(x -> count < x.available));
+
+        return goodsList.stream().filter(x -> count > x.available).collect(Collectors.toList());
+//        return goodsList;
     }
 
     // - вернуть список, с товаром, количество на складе которого больше count1 и меньше count2
     List<Goods> сountBetween(int count1, int count2){
 
-        goodsList.sort(Comparator.comparing(x -> count1 < x.available && count2 > x.available));
-        return this.goodsList.stream().takeWhile(x -> count1 < x.available && count2 > x.available).collect(Collectors.toList());
+//        goodsList.sort(Comparator.comparing(x -> count1 < x.available && count2 > x.available));
+        return this.goodsList.stream().filter(x -> count1 < x.available && count2 > x.available).collect(Collectors.toList());
     }
 
 
@@ -104,11 +106,11 @@ class Goods {
 
     public static void main(String[] args) {
         List<Goods> goodsList = new ArrayList<>();
-        goodsList.add(new Goods("Рис", "1110", 1000, 100.00, Instant.now()));
+        goodsList.add(new Goods("Рис", "1110", 900, 100.00, Instant.now()));
         goodsList.add(new Goods("Греча", "1120", 1000, 50.00, Instant.now()));
         goodsList.add(new Goods("Пшено", "1130", 900, 30.00, Instant.now()));
         GoodsWithLambda lambda = new GoodsWithLambda(goodsList);
-        lambda.sortByAvailabilityAndNumber().forEach(System.out ::println);
+        lambda.сountLess(950).forEach(System.out ::println);
 
 
 
