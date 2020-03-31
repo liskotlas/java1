@@ -7,7 +7,7 @@ public class ArraySort {
         T tmp;
         for (int f = 0; f < a.length; f++) {
             for (int i = f + 1; i < a.length; i++) {
-                if (a[f].compareTo(a[i]) > 1) {
+                if (a[f].compareTo(a[i]) == 1) {
                     tmp = a[f];
                     a[f] = a[i];
                     a[i] = tmp;
