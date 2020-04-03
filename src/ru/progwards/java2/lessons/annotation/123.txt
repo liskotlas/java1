@@ -1,0 +1,14 @@
+﻿https://docs.oracle.com/javase/9/javadoc/javadoc-command.htm#JSJAV-GUID-C27CE557-E5C6-4688-9FA5-9E9DE886A569
+
+javadoc  [packages|source-files] [options][@files]
+
+
+D - dependency injection
+
+synchronized java
+
+volatile java
+
+java memory model
+(Алексей Шепелев)
+
