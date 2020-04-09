@@ -1,6 +1,11 @@
 package ru.progwards.java1.lessons.io1;
 
 import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Scanner;
 
 public class LineCount {
@@ -24,8 +29,25 @@ public class LineCount {
         return i;
     }
 
+    public static void read () {
+        Path path = Paths.get("E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\Training\\tmpout.txt");
+        List<String> strings = List.of();
+
+
+
+            try {
+                strings = Files.readAllLines(path);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        strings.forEach(s -> System.out.println(s));
+
+        }
+
+
     public static void main(String[] args) {
-        System.out.println(calcEmpty("E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\Training\\tmp.txt"));
+        read();
+//        System.out.println(calcEmpty("E:\\Java\\Education\\src\\ru\\progwards\\java1\\lessons\\Training\\tmpout.txt"));
     }
 }
 
