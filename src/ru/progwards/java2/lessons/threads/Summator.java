@@ -1,72 +1,75 @@
 package ru.progwards.java2.lessons.threads;
 
-public class Summator{
-    static Integer resultOut = 0;
-    int count = 0;
-    int start;
-    int finish;
+import java.math.BigInteger;
 
-    public Summator(int count){
+public class Summator{
+    static BigInteger resultOut = BigInteger.ZERO;
+    int  count;
+    BigInteger  start = BigInteger.ZERO;
+    BigInteger  finish = BigInteger.ZERO;
+
+    public Summator(int  count){
         this.count = count;
     }
 
-    public static void setSum(int summa){
+    public static void setSum(BigInteger  summa){
         synchronized (resultOut){
-            resultOut += summa;
+            resultOut = resultOut.add(summa);
 //            System.out.println(resultOut);
         }
     }
 
 
 
-    public int sum(int number){
+    public BigInteger  sum(BigInteger  number){
         Thread[] threads = new Thread[count];
 
         for (int i = 1; i <= count; i++) {
-            int all = number / count;
-            finish = all * i;
-            start = finish - all + 1;
+            BigInteger  all = number.divide(BigInteger.valueOf(count));
+            finish = all.multiply(BigInteger.valueOf(i));
+            start = finish.subtract(all).add(BigInteger.ONE);
             if (i == count) {
                 finish = number;
             }
-//                System.out.println(start + " - " + finish);
                 threads[i-1] = new Thread(new SummatorThred(start, finish));
                 threads[i-1].start();
 
+
         }
-            for (int a = 0; a < count; a++){
+            for (Thread thread : threads){
                 try {
-                    threads[a].join();
+                    thread.join();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
+
             return resultOut;
     }
 
 
 
     public static void main(String[] args) {
-        System.out.println(new Summator(5).sum(1000));
+        System.out.println(new Summator(5).sum(BigInteger.valueOf(1000)));
     }
 }
 
 class SummatorThred implements Runnable{
-    int start = 0;
-    int finish = 0;
-    int result;
+    BigInteger  start = BigInteger.ZERO;
+    BigInteger  finish = BigInteger.ZERO;
+    BigInteger  result = BigInteger.ZERO;
 
 
 
-    public SummatorThred(int start, int finish){
+    public SummatorThred(BigInteger  start, BigInteger  finish){
 //        System.out.println(start + " - " + finish);
          this.start = start;
          this.finish = finish;
     }
 
-    private void Summa (int start, int finish){
-        for(int i = start; i <= finish; i++){
-            result +=i;
+    private void Summa (BigInteger  start, BigInteger finish){
+        for(BigInteger  i = start; i.compareTo(finish) <= 0; i = i.add(BigInteger.ONE)){
+            result = result.add(i);
         }
         Summator.setSum(result);
     }
