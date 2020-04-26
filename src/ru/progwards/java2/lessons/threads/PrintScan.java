@@ -59,7 +59,7 @@ class Print implements Runnable{
     public void run() {
         printOut(this.name, this.pages);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(50);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -94,7 +94,7 @@ class Scan implements Runnable{
     public void run() {
         scanOut(this.name, this.pages);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(70);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -1,12 +1,13 @@
 package ru.progwards.java1.lessons.Training;
 
 
-import java.util.Scanner;
-
 public class Training {
 
     public static void main(String[] args) {
 
-        System.out.println("Привет!!!".replaceAll(".", "*"));
+        String s = "\"ООО Котласгазсервис\"";
+        System.out.println(s);
+        String s2 = s.replaceAll("ООО", " ").replaceAll("\"", " ").trim();
+        System.out.println(s.contains(s2));
     }
 }
