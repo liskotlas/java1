@@ -12,8 +12,6 @@ public interface AccountService {
     public void withdraw(Account account, double amount);
 
     public void transfer(Account from, Account to, double amount);
+
 }
 
-
-//    double balance(Account account);
-////}

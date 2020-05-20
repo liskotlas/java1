@@ -41,5 +41,6 @@
     <orderEntry type="library" name="poi-ooxml-4.1.2" level="project" />
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="json-simple-1.1.1" level="project" />
+    <orderEntry type="library" name="J" level="project" />
   </component>
 </module>

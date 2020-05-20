@@ -1,11 +1,18 @@
 package ru.progwards.java2.lessons.app.model;
 
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+
 //POJO
 public class Account {
 
     private String id;
     private String holder;
+    private Date date;
 //    private Date date;
     private double amount;
     private int pin;
@@ -26,13 +33,14 @@ public class Account {
         this.holder = holder;
     }
 
-//    public Date getDate() {
-//        return date;
-//    }
+    public Date getDate() {
+        return date;
+    }
 
-//    public void setDate(Date date) {
-//        this.date = date;
-//    }
+    public void setDate(Date date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        this.date = date;
+    }
 
     public double getAmount() {
         return amount;
@@ -48,5 +56,9 @@ public class Account {
 
     public void setPin(int pin) {
         this.pin = pin;
+    }
+
+    public static void main(String[] args) {
+
     }
 }

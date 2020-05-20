@@ -1,7 +1,8 @@
 package ru.progwards.java1.lessons.collections;
 
 import java.util.*;
-
+//https://github.com/FasterXML/jackson-databind/wiki
+//https://github.com/greepz/progward-schedule
 public class Creator {
     public static Collection<Integer> fillEven(int n) {
         List<Integer> integerCollections = new ArrayList<>();

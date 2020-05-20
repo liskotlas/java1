@@ -1,33 +1,25 @@
 package ru.progwards.java2.lessons.Training;
 
-import ru.progwards.java2.lessons.app.Store;
-
-import java.util.HashMap;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
+import java.util.Locale;
 
 public class Trainig {
     public static void main(String[] args) {
+        LocalDateTime localDateTime = LocalDateTime.of(2020, Month.JANUARY, 1, 12, 0, 10);
+        LocalDateTime localDateTime1 = LocalDateTime.now();
+        String time = localDateTime.toString();
+//        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-ddThh:mm:ss");
+//        LocalDateTime localDateTime2 = LocalDateTime.parse(time, dateTimeFormatter);
+//        System.out.println(localDateTime2.toString());
+        String s = "2020-02-23 21:32:00";
+//        TemporalAccessor f = dateTimeFormatter.parse("yyyy-MM-dd hh:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        LocalDateTime date = LocalDateTime.parse(s, formatter);
+        System.out.println(date);
 
-
-        String request = "GET /balance?id=cbf61d6f-ea3f-4f9a-9c5c-bd11dd02c392 HTTP/1.1";
-//        System.out.println(request.indexOf("GET /"));
-//        System.out.println(request.indexOf("?"));
-        String method = request.substring(request.lastIndexOf("GET /")+5, request.indexOf("?")).trim();
-//        System.out.println(method);
-        HashMap<String, String> parameters = new HashMap<>();
-
-
-        String[] strResp = request.substring(request.indexOf("?")+1, request.indexOf("HTTP")).trim().split("&");
-        for (String strPair : strResp) {
-            String[] pair = strPair.split("=");
-            if (pair.length > 1) {
-                parameters.put(pair[0], pair[1]);
-            }
-        }
-        for (var entry : parameters.entrySet()){
-            System.out.println(entry.getKey() + " = " + entry.getValue());
-        }
-
-        Store.getStore();
 
     }
 

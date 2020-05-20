@@ -1,4 +1,4 @@
-package ru.progwards.java2.lessons.app.service.impl;
+package ru.progwards.java2.lessons.app.service;
 
 import ru.progwards.java2.lessons.app.Store;
 import ru.progwards.java2.lessons.app.model.Account;
@@ -9,7 +9,8 @@ import java.util.Collection;
 public class StoreServiceImpl implements StoreService {
     @Override
     public Account get(String id) {
-        Account account = Store.getStore().get(id);
+//        Account account = Store.getStore().get(id);
+        Account account = Store.getAccountDB(id);
         if (account == null){
             throw new RuntimeException("Account not found by id:"+id);
         }
@@ -29,12 +30,14 @@ public class StoreServiceImpl implements StoreService {
         if (Store.getStore().get(id) == null){
             throw new RuntimeException("Account not found by id:"+id);
         }
-        Store.getStore().remove(id);
+//        Store.getStore().remove(id);
+        Store.deleteAccountDB(id);
     }
 
     @Override
     public void insert(Account account) {
-        Store.getStore().put(account.getId(), account);
+//        Store.getStore().put(account.getId(), account);
+        Store.insertAccountDB(account);
     }
 
     @Override
@@ -42,6 +45,7 @@ public class StoreServiceImpl implements StoreService {
         if (Store.getStore().get(account.getId()) == null){
             throw new RuntimeException("Account not found by id:"+account.getId());
         }
-        this.insert(account);
+//        this.insert(account);
+        Store.updateAccountDB(account);
     }
 }
